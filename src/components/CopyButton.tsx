@@ -31,7 +31,7 @@ export default function CopyButton({ content }: CopyButtonProps) {
           </>
         )}
       </svg>
-      {copied ? "Copied!" : "Copy Markdown"}
+      {copied ? "Copied!" : "Copy .md"}
     </button>
   );
 }
