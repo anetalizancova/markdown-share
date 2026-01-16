@@ -56,9 +56,9 @@ git push > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     echo "✅ Pushnuto na GitHub"
     echo ""
-    echo "🔗 Link: https://markdown-share-fawn.vercel.app/${SLUG}"
+    echo "🔗 Link: https://anetalizancova-mdshare.vercel.app/${SLUG}"
     echo "⏱️  Vercel automaticky redeployne za ~1 minutu"
 else
     echo "⚠️  Chyba při pushnutí na GitHub (možná už je pushnuté)"
-    echo "🔗 Link: https://markdown-share-fawn.vercel.app/${SLUG}"
+    echo "🔗 Link: https://anetalizancova-mdshare.vercel.app/${SLUG}"
 fi
