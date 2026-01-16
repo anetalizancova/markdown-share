@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAllMarkdownFiles } from "@/lib/markdown";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export async function GET() {
   try {
     const files = getAllMarkdownFiles();

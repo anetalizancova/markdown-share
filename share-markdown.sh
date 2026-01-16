@@ -24,7 +24,12 @@ fi
 if [ -z "$SLUG" ]; then
     FILENAME=$(basename "$SOURCE_FILE" .md)
     # Sanitizuj název pro URL (pouze alfanumerické, pomlčky a podtržítka)
+    # Nahraď nealfanumerické znaky pomlčkou, převeď na lowercase
     SLUG=$(echo "$FILENAME" | sed 's/[^a-zA-Z0-9_-]/-/g' | tr '[:upper:]' '[:lower:]')
+    # Odstraň dvojité a více po sobě jdoucích pomlček
+    SLUG=$(echo "$SLUG" | sed 's/-\+/-/g')
+    # Odstraň pomlčky na začátku a konci
+    SLUG=$(echo "$SLUG" | sed 's/^-\+//;s/-\+$//')
 fi
 
 TARGET_FILE="$MARKDOWN_SHARE_DIR/public/markdowns/${SLUG}.md"
