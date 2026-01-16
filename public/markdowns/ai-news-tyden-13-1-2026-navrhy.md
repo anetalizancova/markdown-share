@@ -68,3 +68,4 @@ MIT Technology Review píše, že čínské firmy mají jasnou vizi a investují
 - Období: 6.1.2026 - 13.1.2026
 - Typ: Carousel
 - Zdroj: TechCrunch AI, MIT Technology Review AI
+# Build trigger Fri Jan 16 16:33:48 CET 2026
