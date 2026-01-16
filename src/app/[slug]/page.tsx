@@ -5,15 +5,26 @@ import MarkdownViewer from "@/components/MarkdownViewer";
 import { getMarkdownBySlug, getMarkdownSlugs } from "@/lib/markdown";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return getMarkdownSlugs().map((slug) => ({ slug }));
+  try {
+    return getMarkdownSlugs().map((slug) => ({ slug }));
+  } catch {
+    return [];
+  }
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  const markdown = getMarkdownBySlug(params.slug);
+async function getParams(params: PageProps["params"]) {
+  return await params;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await getParams(params);
+  const markdown = getMarkdownBySlug(slug);
 
   if (!markdown) {
     return { title: "Not found" };
@@ -25,8 +36,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function MarkdownPage({ params }: PageProps) {
-  const markdown = getMarkdownBySlug(params.slug);
+export default async function MarkdownPage({ params }: PageProps) {
+  const { slug } = await getParams(params);
+  const markdown = getMarkdownBySlug(slug);
 
   if (!markdown) {
     notFound();

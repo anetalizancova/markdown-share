@@ -21,6 +21,10 @@ export function getMarkdownSlugs(): string[] {
 }
 
 export function getMarkdownBySlug(slug: string): MarkdownFile | null {
+  if (!slug || typeof slug !== "string") {
+    return null;
+  }
+
   const safeSlug = slug.replace(/[^a-zA-Z0-9-_]/g, "");
   const filePath = path.join(MARKDOWN_DIR, `${safeSlug}.md`);
 
