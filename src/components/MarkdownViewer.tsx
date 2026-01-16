@@ -51,6 +51,12 @@ export default function MarkdownViewer({
     <div className="page">
       <header className="page-header">
         <h1 className="page-title">{title}</h1>
+        <a className="admin-link" href="/admin" title="Admin panel">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M6 8L8 10L10 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
       </header>
       <div className="reader-layout">
         <aside className="toc">
@@ -106,18 +112,11 @@ export default function MarkdownViewer({
       </div>
       <div className="floating-actions">
         <CopyButton content={content} />
-        <a className="btn btn-secondary" href={`/markdowns/${slug}.md`} download>
+        <a className="btn btn-secondary" href={`/markdowns/${slug}.md`} download={`${slug}.md`}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 11L8 1M8 11L4 7M8 11L12 7M2 13L14 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          Download
-        </a>
-        <a className="btn btn-secondary" href="/admin" title="Admin panel">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M6 8L8 10L10 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          Admin
+          Download .md
         </a>
       </div>
     </div>

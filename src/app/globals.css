@@ -102,6 +102,10 @@ a {
 
 .page-header {
   margin-bottom: 8px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .page-title {
@@ -110,6 +114,28 @@ a {
   font-weight: 700;
   line-height: 1.2;
   color: var(--text);
+  flex: 1;
+}
+
+.admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
+  transition: all 0.2s ease;
+  margin-left: 24px;
+  flex-shrink: 0;
+}
+
+.admin-link:hover {
+  background: var(--background);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn {
