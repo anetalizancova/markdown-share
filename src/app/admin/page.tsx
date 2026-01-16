@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import AdminPanel from "@/components/AdminPanel";
 
-const ADMIN_PASSWORD = "aibility2024"; // Změň si toto heslo!
+const ADMIN_PASSWORD = "2859";
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
