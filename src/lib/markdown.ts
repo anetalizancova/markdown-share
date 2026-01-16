@@ -39,6 +39,13 @@ export function getMarkdownBySlug(slug: string): MarkdownFile | null {
   const filePath = path.join(MARKDOWN_DIR, `${safeSlug}.md`);
 
   if (!fs.existsSync(filePath)) {
+    console.error(`Markdown file not found: ${filePath}`);
+    console.error(`Looking for slug: ${slug} -> safeSlug: ${safeSlug}`);
+    console.error(`Markdown directory: ${MARKDOWN_DIR}`);
+    if (fs.existsSync(MARKDOWN_DIR)) {
+      const availableFiles = fs.readdirSync(MARKDOWN_DIR);
+      console.error(`Available files:`, availableFiles);
+    }
     return null;
   }
 
@@ -54,12 +61,16 @@ export function getMarkdownBySlug(slug: string): MarkdownFile | null {
 
 export function getAllMarkdownFiles(): MarkdownFileInfo[] {
   if (!fs.existsSync(MARKDOWN_DIR)) {
+    console.error(`Markdown directory not found: ${MARKDOWN_DIR}`);
+    console.error(`Current working directory: ${process.cwd()}`);
     return [];
   }
 
   const files = fs
     .readdirSync(MARKDOWN_DIR)
     .filter((file) => file.endsWith(".md"));
+  
+  console.log(`Found ${files.length} markdown files in ${MARKDOWN_DIR}:`, files);
 
   return files
     .map((filename) => {
