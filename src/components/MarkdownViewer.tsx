@@ -112,6 +112,13 @@ export default function MarkdownViewer({
           </svg>
           Download
         </a>
+        <a className="btn btn-secondary" href="/admin" title="Admin panel">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M6 8L8 10L10 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Admin
+        </a>
       </div>
     </div>
   );

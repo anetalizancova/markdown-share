@@ -9,6 +9,16 @@ export type MarkdownFile = {
   content: string;
 };
 
+export type MarkdownFileInfo = {
+  slug: string;
+  filename: string;
+  title: string;
+  url: string;
+  date: string;
+  time: string;
+  size: number;
+};
+
 export function getMarkdownSlugs(): string[] {
   if (!fs.existsSync(MARKDOWN_DIR)) {
     return [];
@@ -40,6 +50,70 @@ export function getMarkdownBySlug(slug: string): MarkdownFile | null {
     title,
     content,
   };
+}
+
+export function getAllMarkdownFiles(): MarkdownFileInfo[] {
+  if (!fs.existsSync(MARKDOWN_DIR)) {
+    return [];
+  }
+
+  const files = fs
+    .readdirSync(MARKDOWN_DIR)
+    .filter((file) => file.endsWith(".md"));
+
+  return files
+    .map((filename) => {
+      const slug = filename.replace(/\.md$/, "");
+      const filePath = path.join(MARKDOWN_DIR, filename);
+      const stats = fs.statSync(filePath);
+      const content = fs.readFileSync(filePath, "utf8");
+      const title = extractTitle(content) ?? slug;
+
+      const date = stats.mtime;
+      const dateStr = date.toLocaleDateString("cs-CZ", {
+        day: "2-digit",
+        month: "short",
+        year: "2-digit",
+      });
+      const timeStr = date.toLocaleTimeString("cs-CZ", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      return {
+        slug,
+        filename,
+        title,
+        url: `/${slug}`,
+        date: dateStr,
+        time: timeStr,
+        size: stats.size,
+      };
+    })
+    .sort((a, b) => {
+      // Sort by date, newest first
+      const filePathA = path.join(MARKDOWN_DIR, a.filename);
+      const filePathB = path.join(MARKDOWN_DIR, b.filename);
+      const statsA = fs.statSync(filePathA);
+      const statsB = fs.statSync(filePathB);
+      return statsB.mtime.getTime() - statsA.mtime.getTime();
+    });
+}
+
+export function deleteMarkdownFile(slug: string): boolean {
+  const safeSlug = slug.replace(/[^a-zA-Z0-9-_]/g, "");
+  const filePath = path.join(MARKDOWN_DIR, `${safeSlug}.md`);
+
+  if (!fs.existsSync(filePath)) {
+    return false;
+  }
+
+  try {
+    fs.unlinkSync(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function extractTitle(content: string): string | null {
