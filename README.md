@@ -23,3 +23,4 @@ Potom otevři `http://localhost:3000`.
 
 - Markdown soubory jsou veřejné (public folder).
 - Copy a Download jsou dostupné přímo ve view.
+
