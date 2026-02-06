@@ -14,7 +14,7 @@ Nevěděli jste, na co se AI zeptat. Teď víte přesně, jak ji využít.
 
 Aimee je AI kouč od Aibility, který vás provede krok za krokem. Podle toho, co děláte. Podle toho, co potřebujete.
 
-Jeden chat = jedno aha.
+Jeden chat = jeden aha moment.
 
 🎯 Vyzkoušejte zdarma →
 
@@ -22,7 +22,7 @@ Jeden chat = jedno aha.
 
 ### Delší verze
 
-Znáte to. Všichni mluví o AI, ale vy pořád nevíte, jak ji reálně použít ve své práci.
+Všichni mluví o AI, ale vy pořád nevíte, jak ji reálně použít ve své práci.
 
 Zkoušíte ChatGPT. Googlíte prompty. Díváte se na tutoriály. A stejně máte pocit, že vám něco uniká.
 
@@ -141,96 +141,8 @@ A bonus? Každý chat vás něco naučí. Takže příště už to zvládnete sa
 
 ---
 
-## UNIVERZÁLNÍ FRICTION REDUCERS
 
-- 15 zpráv měsíčně zdarma
-- Žádná karta, žádný závazek
-- Setup za 30 sekund
-- Od Aibility – #1 v AI vzdělávání v ČR
 
----
 
-## CLAIMY NA VIZUÁLY
 
-### Styl: Ručně psaný hook (UGC)
-- Tahle AI mě právě naučila používat AI
-- Tahle AI mi právě poradila líp než kolega
-- Tahle AI mě učí pracovat s AI
-- Tohle bych googlil hodinu. Aimee? 30 sekund.
-- Jeden chat s Aimee a najednou to dává smysl
-- Šéf si myslí, že jsem génius. Díky, Aimee.
 
-### Styl: Emoji rytmus
-- Přestaňte 👏 googlit 👏 prompty 👏
-- Přestaňte 👏 hádat 👏 jak 👏 na 👏 AI 👏
-- Dost 👏 teorie 👏 Konečně 👏 praxe 👏
-
-### Styl: Dear Diary (storytelling)
-
-**Varianta A:**
-> Milý deníčku,
-> 
-> Dnes jsem vstoupila do své AI éry.
-> Opustila jsem éru "to by mi trvalo věčnost".
-> Zeptala jsem se Aimee, jak automatizovat report.
-> Za 10 minut jsem měla hotovo.
-> Myslela jsem, že mě někdo prank'uje.
-> 
-> Deníčku, myslím, že rostu jako člověk.
-> Je to divný.
-> Líbí se mi to.
-
-**Varianta B:**
-> Milý deníčku,
-> 
-> Kolega zase řešil Excel 4 hodiny.
-> Já jsem se zeptala Aimee.
-> 15 minut. Hotovo.
-> Neprozradila jsem mu to.
-> 
-> Jsem zlý člověk?
-> Možná.
-> Ale mám superschopnosti.
-
-### Styl: Silueta Aimee
-- AI kouč jen pro vás.
-- Kurzy učí všechny. Já jen vás.
-- Znám vaši práci. Proto radím líp.
-- Jste jednu konverzaci od prvního WOW.
-- Know-how celého týmu Aibility. 24/7. V jednom chatu.
-
-### Styl: Statistika (ManyChat)
-- 80 % lidí neví, na co se AI zeptat. → Aimee vám to ukáže.
-- 90 % AI tipů na internetu je generic. → Aimee radí podle vaší práce.
-
-### Styl: Časový benefit (Fyxer)
-- Tahle AI vás naučí prompty dřív, než dopijete kafe.
-- Tahle AI vám poradí s čímkoliv. I o půlnoci.
-
-### Styl: Problém → Řešení (Flow)
-- Nevíte, na co se AI zeptat? → Aimee vám to ukáže.
-- Chcete používat AI, ale nevíte jak začít? → Jeden chat stačí.
-
-### Styl: Punch claim (Jenni)
-- Stop googlení promptů.
-- Stop hádání, jak na AI.
-- Konec zmatku. Začněte s Aimee.
-
----
-
-## POZNÁMKY K POUŽITÍ
-
-**Pro Meta reklamy:**
-- Krátké verze copy → Feed, Stories, Reels
-- Delší verze copy → Feed (carousel, single image s delším textem)
-- Claimy na vizuály → přímo do obrázku/videa
-
-**Testovat:**
-- Různé kombinace headline + body + CTA
-- A/B test: storytelling vs. provokativní vs. social proof
-- Různé friction reducers
-
-**Cílové skupiny:**
-- Profesionálové, kteří chtějí být efektivnější
-- Lidi, co zkouší AI, ale neví jak správně
-- Firmy, které chtějí AI adoption v týmu
