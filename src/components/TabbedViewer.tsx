@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -51,21 +51,34 @@ function extractToc(content: string): TocItem[] {
   return items;
 }
 
+function downloadFile(filename: string, content: string) {
+  const blob = new Blob([content], { type: "text/markdown" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function CopiedToast({ show }: { show: boolean }) {
+  if (!show) return null;
+  return <span className="copied-toast">Zkopírováno!</span>;
+}
+
 export default function TabbedViewer({ docs }: { docs: Doc[] }) {
   const [activeTab, setActiveTab] = useState(0);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [showCommentForm, setShowCommentForm] = useState(false);
-  const [newComment, setNewComment] = useState("");
-  const [newSection, setNewSection] = useState("");
+  const [inlineSection, setInlineSection] = useState<string | null>(null);
+  const [inlineText, setInlineText] = useState("");
   const [showPanel, setShowPanel] = useState(false);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [copied, setCopied] = useState(false);
+  const inlineRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      try {
-        setComments(JSON.parse(stored));
-      } catch {}
+      try { setComments(JSON.parse(stored)); } catch {}
     }
   }, []);
 
@@ -80,21 +93,23 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
   );
   const allActiveComments = comments.filter((c) => !c.resolved);
 
-  const addComment = () => {
-    if (!newComment.trim()) return;
-    const comment: Comment = {
-      id: crypto.randomUUID(),
-      docSlug: activeDoc.slug,
-      text: newComment.trim(),
-      sectionRef: newSection,
-      timestamp: Date.now(),
-      resolved: false,
-    };
-    setComments((prev) => [...prev, comment]);
-    setNewComment("");
-    setNewSection("");
-    setShowCommentForm(false);
-  };
+  const addComment = useCallback(
+    (sectionRef: string, text: string) => {
+      if (!text.trim()) return;
+      setComments((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          docSlug: activeDoc.slug,
+          text: text.trim(),
+          sectionRef,
+          timestamp: Date.now(),
+          resolved: false,
+        },
+      ]);
+    },
+    [activeDoc.slug]
+  );
 
   const resolveComment = (id: string) => {
     setComments((prev) =>
@@ -118,6 +133,124 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
 
   const docForSlug = (slug: string) => docs.find((d) => d.slug === slug);
 
+  const commentsForSection = (section: string) =>
+    docComments.filter((c) => c.sectionRef === section);
+
+  const handleCopy = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const openInlineComment = (section: string) => {
+    setInlineSection(section);
+    setInlineText("");
+    setTimeout(() => inlineRef.current?.focus(), 50);
+  };
+
+  const submitInlineComment = () => {
+    if (inlineSection !== null) {
+      addComment(inlineSection, inlineText);
+      setInlineSection(null);
+      setInlineText("");
+    }
+  };
+
+  const allContent = docs.map((d) => `# ${d.title}\n\n${d.content}`).join("\n\n---\n\n");
+
+  const SectionHeading = ({
+    level,
+    id,
+    text,
+    children,
+    ...props
+  }: {
+    level: 2 | 3 | 4;
+    id: string;
+    text: string;
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => {
+    const Tag = `h${level}` as const;
+    const sectionComments = commentsForSection(text);
+    const isOpen = inlineSection === text;
+
+    return (
+      <>
+        <div className="section-heading-row">
+          <Tag id={id} {...props}>
+            {children}
+          </Tag>
+          <button
+            className={`section-comment-btn ${sectionComments.length > 0 ? "has-comments" : ""}`}
+            onClick={() => (isOpen ? setInlineSection(null) : openInlineComment(text))}
+            title="Přidat komentář k této sekci"
+          >
+            {sectionComments.length > 0 ? (
+              <span className="section-comment-count">{sectionComments.length}</span>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3V13M3 8H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {sectionComments.length > 0 && !isOpen && (
+          <div className="inline-comments-preview">
+            {sectionComments.map((c) => (
+              <div key={c.id} className="inline-comment-chip">
+                <span className="inline-comment-chip-text">{c.text}</span>
+                <button
+                  className="inline-comment-chip-resolve"
+                  onClick={() => resolveComment(c.id)}
+                  title="Vyřešit"
+                >
+                  ✓
+                </button>
+                <button
+                  className="inline-comment-chip-delete"
+                  onClick={() => deleteComment(c.id)}
+                  title="Smazat"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {isOpen && (
+          <div className="inline-comment-form">
+            <textarea
+              ref={inlineRef}
+              value={inlineText}
+              onChange={(e) => setInlineText(e.target.value)}
+              placeholder={`Komentář k "${text}"...`}
+              className="comment-textarea"
+              rows={2}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && e.metaKey) submitInlineComment();
+                if (e.key === "Escape") setInlineSection(null);
+              }}
+            />
+            <div className="inline-comment-form-actions">
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => setInlineSection(null)}
+              >
+                Zrušit
+              </button>
+              <button className="btn btn-primary btn-sm" onClick={submitInlineComment}>
+                Uložit
+              </button>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
+
   return (
     <div className="tabbed-page">
       <header className="tabbed-header">
@@ -127,23 +260,60 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
             <h1 className="tabbed-title">Lead Magnety pro review</h1>
           </div>
           <div className="tabbed-header-actions">
+            <div className="dropdown-wrap">
+              <button className="btn btn-toolbar dropdown-trigger">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 11L8 1M8 11L4 7M8 11L12 7M2 13L14 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Stáhnout ▾
+              </button>
+              <div className="dropdown-menu">
+                <button
+                  className="dropdown-item"
+                  onClick={() => downloadFile(`${activeDoc.slug}.md`, activeDoc.content)}
+                >
+                  Stáhnout aktuální tab (.md)
+                </button>
+                <button
+                  className="dropdown-item"
+                  onClick={() => downloadFile("lead-magnety-vsechny.md", allContent)}
+                >
+                  Stáhnout všechny 3 (.md)
+                </button>
+              </div>
+            </div>
+
+            <div className="dropdown-wrap">
+              <button className="btn btn-toolbar dropdown-trigger">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="5" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M3 11L3 3C3 2.44772 3.44772 2 4 2L10 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                Kopírovat ▾
+                <CopiedToast show={copied} />
+              </button>
+              <div className="dropdown-menu">
+                <button
+                  className="dropdown-item"
+                  onClick={() => handleCopy(activeDoc.content)}
+                >
+                  Kopírovat aktuální tab
+                </button>
+                <button
+                  className="dropdown-item"
+                  onClick={() => handleCopy(allContent)}
+                >
+                  Kopírovat všechny 3
+                </button>
+              </div>
+            </div>
+
             <button
-              className="btn btn-toolbar"
+              className={`btn btn-toolbar ${showPanel ? "btn-toolbar-active" : ""}`}
               onClick={() => setShowPanel(!showPanel)}
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 4H14M2 8H14M2 12H8"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4H14M2 8H14M2 12H8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               Komentáře{" "}
               {allActiveComments.length > 0 && (
@@ -180,6 +350,11 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
               {toc.map((item) => (
                 <li key={item.id} className={`toc-item level-${item.level}`}>
                   <a href={`#${item.id}`}>{item.text}</a>
+                  {commentsForSection(item.text).length > 0 && (
+                    <span className="toc-comment-indicator">
+                      {commentsForSection(item.text).length}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -190,32 +365,20 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              h2({ children, ...props }) {
+              h2({ children }) {
                 const text = String(children);
                 const id = slugify(text);
-                return (
-                  <h2 id={id} {...props}>
-                    {children}
-                  </h2>
-                );
+                return <SectionHeading level={2} id={id} text={text}>{children}</SectionHeading>;
               },
-              h3({ children, ...props }) {
+              h3({ children }) {
                 const text = String(children);
                 const id = slugify(text);
-                return (
-                  <h3 id={id} {...props}>
-                    {children}
-                  </h3>
-                );
+                return <SectionHeading level={3} id={id} text={text}>{children}</SectionHeading>;
               },
-              h4({ children, ...props }) {
+              h4({ children }) {
                 const text = String(children);
                 const id = slugify(text);
-                return (
-                  <h4 id={id} {...props}>
-                    {children}
-                  </h4>
-                );
+                return <SectionHeading level={4} id={id} text={text}>{children}</SectionHeading>;
               },
             }}
           >
@@ -226,134 +389,53 @@ export default function TabbedViewer({ docs }: { docs: Doc[] }) {
         {showPanel && (
           <aside className="comment-panel">
             <div className="comment-panel-header">
-              <h3>Komentáře</h3>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={() => {
-                  setShowCommentForm(true);
-                  setTimeout(() => textareaRef.current?.focus(), 100);
-                }}
-              >
-                + Přidat
-              </button>
+              <h3>Všechny komentáře</h3>
             </div>
-
-            {showCommentForm && (
-              <div className="comment-form">
-                <select
-                  value={newSection}
-                  onChange={(e) => setNewSection(e.target.value)}
-                  className="comment-select"
-                >
-                  <option value="">Obecný komentář</option>
-                  {toc.map((item) => (
-                    <option key={item.id} value={item.text}>
-                      {"—".repeat(item.level - 2)} {item.text}
-                    </option>
-                  ))}
-                </select>
-                <textarea
-                  ref={textareaRef}
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Napiš komentář..."
-                  className="comment-textarea"
-                  rows={3}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && e.metaKey) addComment();
-                  }}
-                />
-                <div className="comment-form-actions">
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => {
-                      setShowCommentForm(false);
-                      setNewComment("");
-                      setNewSection("");
-                    }}
-                  >
-                    Zrušit
-                  </button>
-                  <button className="btn btn-primary btn-sm" onClick={addComment}>
-                    Uložit (⌘↵)
-                  </button>
-                </div>
-              </div>
-            )}
 
             <div className="comment-list">
-              {docComments.length === 0 && !showCommentForm && (
+              {allActiveComments.length === 0 && (
                 <p className="comment-empty">
-                  Zatím žádné komentáře k tomuto dokumentu.
+                  Zatím žádné komentáře. Klikni na &quot;+&quot; u nadpisu sekce.
                 </p>
               )}
-              {docComments.map((c) => (
-                <div key={c.id} className="comment-card">
-                  {c.sectionRef && (
-                    <p className="comment-section">📌 {c.sectionRef}</p>
-                  )}
-                  <p className="comment-text">{c.text}</p>
-                  <div className="comment-meta">
-                    <span className="comment-time">{formatTime(c.timestamp)}</span>
-                    <div className="comment-actions">
-                      <button
-                        className="comment-action-btn"
-                        onClick={() => resolveComment(c.id)}
-                        title="Vyřešeno"
-                      >
-                        ✓
-                      </button>
-                      <button
-                        className="comment-action-btn comment-action-delete"
-                        onClick={() => deleteComment(c.id)}
-                        title="Smazat"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {allActiveComments.filter((c) => c.docSlug !== activeDoc.slug)
-              .length > 0 && (
-              <div className="comment-other-docs">
-                <p className="comment-other-title">Komentáře u dalších dokumentů</p>
-                {allActiveComments
-                  .filter((c) => c.docSlug !== activeDoc.slug)
-                  .map((c) => (
-                    <div key={c.id} className="comment-card comment-card-muted">
-                      <p className="comment-doc-label">
-                        {docForSlug(c.docSlug)?.shortTitle}
-                      </p>
-                      {c.sectionRef && (
-                        <p className="comment-section">📌 {c.sectionRef}</p>
-                      )}
-                      <p className="comment-text">{c.text}</p>
-                      <div className="comment-meta">
-                        <span className="comment-time">
-                          {formatTime(c.timestamp)}
-                        </span>
-                        <div className="comment-actions">
-                          <button
-                            className="comment-action-btn"
-                            onClick={() => resolveComment(c.id)}
-                          >
-                            ✓
-                          </button>
-                          <button
-                            className="comment-action-btn comment-action-delete"
-                            onClick={() => deleteComment(c.id)}
-                          >
-                            ×
-                          </button>
-                        </div>
+              {allActiveComments.map((c) => {
+                const doc = docForSlug(c.docSlug);
+                const isCurrent = c.docSlug === activeDoc.slug;
+                return (
+                  <div
+                    key={c.id}
+                    className={`comment-card ${!isCurrent ? "comment-card-muted" : ""}`}
+                  >
+                    {!isCurrent && (
+                      <p className="comment-doc-label">{doc?.shortTitle}</p>
+                    )}
+                    {c.sectionRef && (
+                      <p className="comment-section">📌 {c.sectionRef}</p>
+                    )}
+                    <p className="comment-text">{c.text}</p>
+                    <div className="comment-meta">
+                      <span className="comment-time">{formatTime(c.timestamp)}</span>
+                      <div className="comment-actions">
+                        <button
+                          className="comment-action-btn"
+                          onClick={() => resolveComment(c.id)}
+                          title="Vyřešeno"
+                        >
+                          ✓
+                        </button>
+                        <button
+                          className="comment-action-btn comment-action-delete"
+                          onClick={() => deleteComment(c.id)}
+                          title="Smazat"
+                        >
+                          ×
+                        </button>
                       </div>
                     </div>
-                  ))}
-              </div>
-            )}
+                  </div>
+                );
+              })}
+            </div>
           </aside>
         )}
       </div>
