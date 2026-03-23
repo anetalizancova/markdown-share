@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor jako Marketing Brain — Aibility</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: "Google Sans Flex", system-ui, sans-serif;
+            --font-headings: "Hedvig Letters Serif", Georgia, serif;
+            --bg: #f9fafb;
+            --bg-card: #ffffff;
+            --bg-secondary: #F8FAFC;
+            --border: rgba(15,23,42,0.08);
+            --border-light: rgba(15,23,42,0.15);
+            --accent: #5000ab;
+            --accent-light: rgba(80,0,171,0.08);
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --text-tertiary: #94A3B8;
+            --code-bg: #f1f0f5;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Topbar */
+        .topbar {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 52px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 12px; }
+        .topbar-logo { height: 24px; }
+        .topbar-title { font-weight: 600; font-size: 14px; color: var(--text); }
+        .topbar-meta { font-size: 12px; color: var(--text-tertiary); }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 52px;
+            height: calc(100vh - 52px);
+            overflow-y: auto;
+            padding: 24px 16px 24px 24px;
+            border-right: 1px solid var(--border);
+            background: var(--bg-secondary);
+            scrollbar-width: thin;
+        }
+        .sidebar-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+            padding: 0 8px;
+        }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav li + li { margin-top: 2px; }
+        .sidebar-nav a {
+            display: block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 150ms ease;
+            line-height: 1.4;
+        }
+        .sidebar-nav a:hover { background: rgba(0,0,0,0.03); color: var(--text); }
+        .sidebar-nav a.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+
+        /* Main */
+        .main {
+            padding: 48px 56px;
+            max-width: 880px;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero h1 {
+            font-family: var(--font-headings);
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .hero-stat {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .hero-quote {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 12px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 56px;
+            scroll-margin-top: 68px;
+        }
+        .section + .section {
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .section h2 {
+            font-family: var(--font-headings);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 28px 0 12px;
+            color: var(--text);
+        }
+        .section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        /* Quote blocks */
+        .quote-block {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .quote-block strong { color: var(--text); }
+
+        /* Hlášky */
+        .hlaska {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 18px;
+            margin: 8px 0;
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+        .hlaska::before {
+            content: '"';
+            position: absolute;
+            top: 6px;
+            left: 10px;
+            font-size: 28px;
+            color: var(--accent);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        .hlaska .text {
+            padding-left: 16px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: var(--shadow);
+        }
+        .card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Tables */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text);
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        td {
+            padding: 10px 16px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-secondary); }
+        td strong { color: var(--text); font-weight: 500; }
+        code {
+            background: var(--code-bg);
+            border-radius: 4px;
+            padding: 1px 6px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.85em;
+            color: var(--accent);
+        }
+
+        /* Note */
+        .note {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .note strong { color: var(--text); }
+
+        /* List */
+        .list { list-style: none; margin: 12px 0; }
+        .list li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 12px;
+            top: 7px;
+        }
+        .list li strong { color: var(--text); }
+
+        /* Steps */
+        .steps { list-style: none; counter-reset: steps; margin: 16px 0; }
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .steps li::before {
+            content: counter(steps);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .steps li strong { color: var(--text); }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .badge-accent {
+            background: var(--accent-light);
+            border-color: transparent;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+
+        /* Stat grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .stat-number {
+            font-family: var(--font-headings);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-tertiary);
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .main { padding: 24px 16px; grid-column: 1; }
+            .hero h1 { font-size: 1.75rem; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+
+    <div class="topbar">
+        <div class="topbar-left">
+            <svg class="topbar-logo" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="18" font-family="Hedvig Letters Serif, serif" font-size="18" font-weight="600" fill="#0F172A">Aibility</text>
+            </svg>
+            <div>
+                <div class="topbar-title">Cursor jako Marketing Brain</div>
+                <div class="topbar-meta">Cursor Masterclass · Březen 2026</div>
+            </div>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <p class="sidebar-label">Obsah</p>
+        <ul class="sidebar-nav" id="sidebarNav">
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#emaily">Emaily</a></li>
+            <li><a href="#socials">Sociální sítě</a></li>
+            <li><a href="#vizualy">Vizuály</a></li>
+            <li><a href="#texty">Texty & Copy</a></li>
+            <li><a href="#strategie">Strategie</a></li>
+            <li><a href="#automatizace">Automatizace & MCP</a></li>
+            <li><a href="#commands">20 Custom příkazů</a></li>
+            <li><a href="#pravidla">23 Custom pravidel</a></li>
+            <li><a href="#cisla">V číslech</a></li>
+            <li><a href="#momenty">Nejlepší momenty</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <!-- Hero -->
+        <div class="hero" id="intro">
+            <h1>Cursor jako Marketing Brain</h1>
+            <div class="hero-stats">
+                <span class="hero-stat">160+ konverzací</span>
+                <span class="hero-stat">77 HTML emailů</span>
+                <span class="hero-stat">20 příkazů</span>
+                <span class="hero-stat">23 pravidel</span>
+                <span class="hero-stat">10+ integrací</span>
+            </div>
+            <p class="hero-quote">Tenhle dokument vznikl v Cursoru. O Cursoru. Pro Cursor Masterclass. Rekurze kompletní.</p>
+        </div>
+
+        <!-- Intro -->
+        <section class="section">
+            <h2>Co tady vlastně děláme</h2>
+            <p>Začalo to jako jednoduchý editor na HTML emaily. Dneska je z toho <strong>kompletní marketingový systém</strong> — emaily, newslettery, sociální sítě, vizuály, webinářové follow-upy, komunitní posty, automatizace, landing pages. Vše v jednom repozitáři, propojené přes 20 custom příkazů a 23 pravidel.</p>
+            <p>Repo se přejmenovalo z <em>email-builder</em> na <em>marketing brain</em>. A to přesně vystihuje, co se stalo.</p>
+        </section>
+
+        <!-- Emaily -->
+        <section class="section" id="emaily">
+            <h2>Emaily — Věčný příběh</h2>
+            <p>Follow-upy z webinářů, newslettery, onboarding, potvrzovací emaily, B2B kampaně. Každý email projde kolečkem: text v markdownu → HTML → brand check → dark mode → Brevo.</p>
+
+            <h3>Iterace je lifestyle</h3>
+            <div class="hlaska"><span class="text">"Udělej to podle toho vzoru." → "To vypadá úplně jinak." → "Říkám PODLE TOHO VZORU."</span></div>
+            <div class="hlaska"><span class="text">"Super! ...ještě jedna věc."</span></div>
+            <div class="hlaska"><span class="text">"Pecka. Ale ten font je špatně."</span></div>
+            <div class="hlaska"><span class="text">"Ok, tohle je hotový." <em>(narrator: nebylo to hotový)</em></span></div>
+
+            <h3>Věčný boj s emailama</h3>
+            <div class="hlaska"><span class="text">"Kde je footer?" <em>(3× za týden)</em></span></div>
+            <div class="hlaska"><span class="text">"Proč tam chybí unsubscribe? Jako vždycky?"</span></div>
+            <div class="hlaska"><span class="text">"Tohle je moc barevný, nechci z toho dělat cirkus."</span></div>
+
+            <div class="note">
+                <strong>Dark mode</strong> je samostatná válečná disciplína. Existuje sekce v dokumentaci s názvem "MAXIMUM RULES" — 7 úrovní obrany proti email klientům. <code>!important</code> na všem. A stejně to Gmail občas invertuje.
+            </div>
+
+            <p><strong>Emoji v emailu:</strong> vypadá nevinně, dokud se 🚀 nerozhodne žít na dalším řádku. Řešení: každé emoji zabalené do speciálního <code>&lt;span&gt;</code> tagu. Máme na to vlastní automatizaci v builderu.</p>
+        </section>
+
+        <!-- Socials -->
+        <section class="section" id="socials">
+            <h2>Sociální sítě — LinkedIn, Instagram, X, Threads</h2>
+            <p>Posty pro všechny platformy, každý s jiným tónem. LinkedIn je thought leadership, Instagram vizuální, X krátký a Threads casual.</p>
+
+            <div class="hlaska"><span class="text">"Potřebuju post, ale ne klasické promo. Něco s use casy, memes, cokoliv."</span></div>
+            <div class="hlaska"><span class="text">"Líbí se mi to Unpopular opinion, to je cool, jen to trochu vyladíme :D"</span></div>
+            <div class="hlaska"><span class="text">"Pořád je to o ničem, měla by tam být hodnota, ne jen floskule."</span></div>
+
+            <h3>Automatický social poster</h3>
+            <p>Generuje posty, plánuje a postuje sám. Když funguje, je to magie. Když ne:</p>
+
+            <div class="hlaska"><span class="text">"Proč je kalendář 3 dny prázdný? Co se stalo??"</span></div>
+            <div class="hlaska"><span class="text">"Posty se naplánovaly zdublovaně. Oprav to, ale jen ty duplicitní."</span></div>
+            <div class="hlaska"><span class="text">"Na 15.2. promuje webinář z 11.2. To se NESMÍ stávat."</span></div>
+            <div class="hlaska"><span class="text">"Děj se vůle boží :D Zítra je pondělí, takže bys měl sám napsat posty a začít postovat."</span></div>
+        </section>
+
+        <!-- Vizuály -->
+        <section class="section" id="vizualy">
+            <h2>Vizuály — Designér z nouze</h2>
+            <p>LinkedIn carousely, Instagram posty, covery pro komunitu, bannery na webináře. Vše generované v Cursoru — přes Gemini, SVG šablony, nebo rovnou v HTML.</p>
+
+            <div class="hlaska"><span class="text">"Udělej mi k tomu vizuál. 1:1, v Aibility stylu, s logem, font Hedvík."</span></div>
+            <div class="hlaska"><span class="text">"Tu fotku dej o fousek víc vidět, ale jen trošku :D"</span></div>
+            <div class="hlaska"><span class="text">"Ježíši, ty covery jsou hrozný :D"</span></div>
+            <div class="hlaska"><span class="text">"Dej to zpátky, předtím to bylo lepší."</span></div>
+            <div class="hlaska"><span class="text">"tvl, my budeme ještě designéři :D Vyexportuj to jako PNG."</span></div>
+            <div class="hlaska"><span class="text">"Tenhle dark vibe se mi líbí, neuděláme z toho nějakého agenta, co bude takhle tvořit vizuály?"</span></div>
+
+            <p>Overlay na obrázek: je příliš světlý → pak příliš tmavý → font je špatně → logo je malé → a nakonec? "Moc hezký! Jen trochu zvětši fonty, Filip nemá rád maličký písmenka :DDD"</p>
+        </section>
+
+        <!-- Texty -->
+        <section class="section" id="texty">
+            <h2>Texty & Copy — Boj se slopem</h2>
+
+            <div class="hlaska"><span class="text">"Vem si nějaký skill na direct-response copy, takhle to nejde... je to slop."</span></div>
+            <div class="hlaska"><span class="text">"Každý email má být originál, ne pořád stejný boxy 1-2-3."</span></div>
+            <div class="hlaska"><span class="text">"Píšeme to do komunity, ne robotům :)))"</span></div>
+            <div class="hlaska"><span class="text">"Celý ten text je těžkopádný, ať to zní přirozeně."</span></div>
+            <div class="hlaska"><span class="text">"Moc málo praktického přínosu. Těch myšlenek z webináře bylo fakt mega moc."</span></div>
+
+            <div class="note">
+                Existuje nepsané pravidlo: pokud to zní jako AI, jdeme znovu. Na to máme skill s metodami Schwartze, Ogilvyho a Sugarmana — aktivuje se, když output potřebuje zachránit. Nadpis "Úvod" nebo "Popis" v komunitním postu = okamžitá červená karta.
+            </div>
+
+            <p>Quality bar je jednoduchý: musí to znít přirozeně, mít praktickou hodnotu, nesmí to být cirkus. A vždycky tam musí být CTA. Vždy. Všude. Bez výjimky.</p>
+        </section>
+
+        <!-- Strategie -->
+        <section class="section" id="strategie">
+            <h2>Strategie & Plánování</h2>
+            <p>Cursor slouží i jako sparring partner. Brainstorming na kampaně, positioning produktů, analýza konkurence, tvorba briefů pro kreativce.</p>
+
+            <div class="hlaska"><span class="text">"Potřebuju sdílet workflow týmu, abysme věděli, kde je prostor pro lepší systém."</span></div>
+            <div class="hlaska"><span class="text">"Hele, tohle je pro Filipa, nemůžeme tam psát tyhle interní věci."</span></div>
+            <div class="hlaska"><span class="text">"Když to vezmeš kolem a kolem, co tam ještě chybí? Třeba jsem na něco zapomněla."</span></div>
+            <div class="hlaska"><span class="text">"No počkej, ono to není úplně manuálně, já na to mám agenta tady..."</span></div>
+
+            <p>Celý marketing tým (2 lidi) má zdokumentovaný workflow na vlastní webové stránce — s editovatelným textem, komentáři a stahováním. Vytvořené v Cursoru. Samozřejmě.</p>
+        </section>
+
+        <!-- Automatizace -->
+        <section class="section" id="automatizace">
+            <h2>Automatizace & MCP</h2>
+            <p>Tady se to stává zajímavým:</p>
+
+            <ul class="list">
+                <li><strong>Webinář proběhne</strong> → GitHub Action stáhne přepis → AI vytáhne klíčové body → vygeneruje follow-up email + Circle post → commitne → pošle notifikaci na Slack. Jeden příkaz.</li>
+                <li><strong>Brevo</strong> napojené přes MCP — jeden příkaz a email je v Brevu jako draft.</li>
+                <li><strong>Circle</strong> přes MCP — jeden příkaz a post je v komunitě.</li>
+                <li><strong>Airtable</strong> přes MCP — data o webinářích přímo v Cursoru.</li>
+                <li><strong>Auto social poster</strong> — generuje, plánuje, postuje. Dashboard na Vercelu.</li>
+                <li><strong>Slack remindery</strong> — scrapne web, najde webinář za 10 dní, pošle reminder.</li>
+                <li><strong>Landing pages</strong> — agent generuje texty, nasazuje přes Framer MCP.</li>
+            </ul>
+
+            <h3>Když to konečně funguje</h3>
+            <div class="hlaska"><span class="text">"Funguje to! ...sice do špatnýho Slack kanálu, ale funguje."</span></div>
+            <div class="hlaska"><span class="text">"ježis, to je super :D"</span></div>
+
+            <h3>Když to nefunguje</h3>
+            <div class="hlaska"><span class="text">"Přijde mi, že je to úplně prázdný, zkus to prosím ještě jinak. Nějak to musí jít snad!"</span></div>
+            <div class="hlaska"><span class="text">"Ty obrázky normálně umíš vygenerovat, dělal jsi to minule!"</span></div>
+            <div class="hlaska"><span class="text">"wtf, je tady napojený Brevo MCP a vždycky ty emaily posíláš podle tohohle commandu."</span></div>
+        </section>
+
+        <!-- Commands -->
+        <section class="section" id="commands">
+            <h2>20 Custom příkazů</h2>
+            <p>Každý opakovaný workflow se stal příkazem. To je ta největší superschopnost:</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Příkaz</th><th>Co udělá</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>/fupwebinar</code></td><td>Přepis webináře → kompletní follow-up email</td></tr>
+                        <tr><td><code>/brevo</code></td><td>HTML email → Brevo draft + test send</td></tr>
+                        <tr><td><code>/circlepost</code></td><td>Zkrátí obsah → postne do Circle</td></tr>
+                        <tr><td><code>/aiedunl</code></td><td>Celý AI Edu newsletter od nuly</td></tr>
+                        <tr><td><code>/socialpost-auto</code></td><td>Markdown → naplánované posty na sítě</td></tr>
+                        <tr><td><code>/mdshare</code></td><td>Markdown → veřejný link</td></tr>
+                        <tr><td><code>/urlimage</code></td><td>Obrázek → GitHub raw URL pro emaily</td></tr>
+                        <tr><td><code>/board</code></td><td>Správa projektového boardu</td></tr>
+                        <tr><td><code>/autofup</code></td><td>Spustí celou webinářovou automatizaci</td></tr>
+                        <tr><td><code>/AIMSfupmail</code></td><td>Follow-up email z AI Morning Show</td></tr>
+                        <tr><td><code>/generate-image</code></td><td>Gemini image gen přímo v Cursoru</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="quote-block">
+                <strong>"Super, udělej z toho command."</strong> = nejvyšší pochvala. Znamená: tohle chci jedním kliknutím příště.
+            </div>
+        </section>
+
+        <!-- Pravidla -->
+        <section class="section" id="pravidla">
+            <h2>23 Custom pravidel</h2>
+            <p>Brand guidelines, UTM konvence, newsletter formáty, email sekvence, direct-response copy, content atomizer, orchestrator... Cursor ví, jak má Aibility vypadat, znít a komunikovat. Nemusíme to opakovat.</p>
+
+            <div class="card">
+                <h4>Příklady pravidel</h4>
+                <ul class="list">
+                    <li><strong>Brand guidelines</strong> — fonty, barvy, gradienty</li>
+                    <li><strong>UTM campaign generator</strong> — automatická naming convention</li>
+                    <li><strong>Direct response copy</strong> — konverzní copy dle Schwartze, Ogilvyho, Sugarmana</li>
+                    <li><strong>Newsletter</strong> — formáty a quality patterns</li>
+                    <li><strong>Content atomizer</strong> — jeden obsah → 5 platforem</li>
+                    <li><strong>Orchestrator</strong> — marketing router, napoví jaký skill použít</li>
+                    <li><strong>AI image/video generation</strong> — product photo, social graphics, talking head</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Čísla -->
+        <section class="section" id="cisla">
+            <h2>V číslech</h2>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">160+</div>
+                    <div class="stat-label">Konverzací</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">77</div>
+                    <div class="stat-label">HTML emailů</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Custom příkazů</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Custom pravidel</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Integrací</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Webinářů</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Chybějících footerů</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Momenty -->
+        <section class="section" id="momenty">
+            <h2>Nejlepší momenty</h2>
+
+            <h3>Pojmenování je věda</h3>
+            <p>Produkty a lidi mají konkrétní jména. A AI je rádo zapomene nebo kreativně překombinuje.</p>
+            <div class="hlaska"><span class="text">"Aimee se jmenuje Aimee, ne Amy, ne Ami, ne Ejmi."</span></div>
+            <div class="hlaska"><span class="text">"To není Replit, to je Railway. Třetí oprava dneska."</span></div>
+            <div class="hlaska"><span class="text">"Napiš to tak, ať nevypadáme, že jsme to dali blbě poprvý."</span></div>
+
+            <h3>Když AI dělá AI věci</h3>
+            <div class="hlaska"><span class="text">"To nedělej. Udělej to."</span></div>
+            <div class="hlaska"><span class="text">"Neříkej mi, jak to udělat. Prostě to udělej."</span></div>
+            <div class="hlaska"><span class="text">"Dej to zpátky, předtím to bylo lepší."</span></div>
+            <div class="hlaska"><span class="text">"Tohle je úplně stejný :D" <em>(po třetí iteraci)</em></span></div>
+
+            <h3>Design feedback loop</h3>
+            <div class="hlaska"><span class="text">"Pořád ten font není správně... tady to máme dobře, proč to neuděláš stejně?"</span></div>
+            <div class="hlaska"><span class="text">"No ale teď tam zas chybí ten unsubscribe jako vždy..."</span></div>
+            <div class="hlaska"><span class="text">"Proč to neuděláš tak jako vždycky panebože?"</span></div>
+            <div class="hlaska"><span class="text">"šikulka." <em>(nejvyšší pochvala)</em></span></div>
+
+            <h3>Meta momenty</h3>
+            <div class="hlaska"><span class="text">Cursor píše feedback na AI nástroj. S poznámkou: "ať je jasný, že to nejsem já :D"</span></div>
+            <div class="hlaska"><span class="text">AI napíše "Jak ti říkají?" — "To je věta z filmu, ne z reálného života."</span></div>
+            <div class="hlaska"><span class="text">AI napíše "Tvoje prostředí tě brzdí." — "To zní, jako bych se měla odstěhovat."</span></div>
+
+            <h3>Typický den v 6 krocích</h3>
+            <ol class="steps">
+                <li><strong>"Udělej mi tohle."</strong></li>
+                <li><strong>"Ne takhle."</strong></li>
+                <li><strong>"Chybí footer."</strong></li>
+                <li><strong>"Super, ale ještě..."</strong></li>
+                <li><strong>"Pecka."</strong></li>
+                <li><strong><code>/brevo</code></strong></li>
+            </ol>
+        </section>
+
+        <!-- Outro -->
+        <section class="section">
+            <h2>Co z toho plyne</h2>
+            <p>Cursor není jen editor. Je to místo, kde vzniká celý marketingový systém — od prvního nápadu po odeslání kampaně. Pravidla zajišťují konzistenci, příkazy šetří hodiny, automatizace běží na pozadí, a MCP propojuje všechno dohromady.</p>
+            <p>A ano, občas chybí footer. Ale to je součást procesu.</p>
+        </section>
+
+        <div class="footer">
+            Made with Cursor · Aibility · Březen 2026
+        </div>
+
+    </main>
+</div>
+
+<script>
+const links = document.querySelectorAll('#sidebarNav a');
+const sections = document.querySelectorAll('.section[id]');
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const id = e.target.id;
+            links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+    });
+}, { rootMargin: '-15% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
