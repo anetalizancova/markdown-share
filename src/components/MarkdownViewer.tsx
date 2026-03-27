@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -78,6 +78,8 @@ export default function MarkdownViewer({
   const [shareUrl, setShareUrl] = useState("");
   const isMeetingNotesPage = slug in MEETING_PAGES;
   const [sectionNotes, setSectionNotes] = useState<Record<string, string>>({});
+  const [checkedTasks, setCheckedTasks] = useState<Record<number, boolean>>({});
+  const checkboxCounter = useRef(0);
 
   useEffect(() => {
     setShareUrl(window.location.href);
@@ -87,37 +89,35 @@ export default function MarkdownViewer({
     if (!isMeetingNotesPage) return;
     try {
       const saved = window.localStorage.getItem(`notes:${slug}`);
-      if (saved) {
-        setSectionNotes(JSON.parse(saved));
-      }
-    } catch {
-      // ignore localStorage parsing errors
-    }
+      if (saved) setSectionNotes(JSON.parse(saved));
+    } catch {}
+    try {
+      const savedTasks = window.localStorage.getItem(`tasks:${slug}`);
+      if (savedTasks) setCheckedTasks(JSON.parse(savedTasks));
+    } catch {}
   }, [isMeetingNotesPage, slug]);
 
   const updateSectionNote = (sectionId: string, value: string) => {
     setSectionNotes((prev) => {
       const next = { ...prev, [sectionId]: value };
-      try {
-        window.localStorage.setItem(`notes:${slug}`, JSON.stringify(next));
-      } catch {
-        // ignore localStorage errors
-      }
+      try { window.localStorage.setItem(`notes:${slug}`, JSON.stringify(next)); } catch {}
       return next;
     });
   };
 
+  const toggleTask = useCallback((idx: number) => {
+    setCheckedTasks((prev) => {
+      const next = { ...prev, [idx]: !prev[idx] };
+      try { window.localStorage.setItem(`tasks:${slug}`, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, [slug]);
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({
-          title: title,
-          text: `Sdílej tento markdown: ${title}`,
-          url: shareUrl,
-        });
-      } catch {
-        // User cancelled or error
-      }
+        await navigator.share({ title, text: `Sdílej: ${title}`, url: shareUrl });
+      } catch {}
     } else {
       navigator.clipboard.writeText(shareUrl);
     }
@@ -181,9 +181,34 @@ export default function MarkdownViewer({
           )}
         </aside>
         <div className="markdown-content">
+          {(() => { checkboxCounter.current = 0; return null; })()}
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
+              input({ type, checked, ...props }) {
+                if (type === "checkbox") {
+                  const idx = checkboxCounter.current++;
+                  const isChecked = checkedTasks[idx] ?? !!checked;
+                  return (
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggleTask(idx)}
+                      className="task-checkbox"
+                      {...props}
+                    />
+                  );
+                }
+                return <input type={type} checked={checked} {...props} />;
+              },
+              li({ children, className, ...props }) {
+                const isTask = className?.includes("task-list-item");
+                return (
+                  <li className={isTask ? "task-list-item" : className} {...props}>
+                    {children}
+                  </li>
+                );
+              },
               h2({ children, ...props }) {
                 const text = String(children);
                 const id = slugify(text);
