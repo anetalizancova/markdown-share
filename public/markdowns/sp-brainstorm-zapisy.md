@@ -130,13 +130,13 @@
 
 ### Tento týden (ASAP)
 
-- [ ] **Aneta:** Finalizovat zápis + to-do list, rozeslat týmu
-- [ ] **Každý:** Vybrat si téma na svůj lead magnet a promyslet story (proč je tam, kam v journey zapadá)
-- [ ] **Každý:** Sepsat do společného chatu, co kdo aktuálně používá (commands, skills, MCPs)
-- [ ] **TBD:** Prozkoumat Brevo MCP a AT v Cursoru → nachystat vlastní lead flow (bez Make.com)
-- [ ] **Jakub:** Doladit analytiku — eventy na webu (aibility.org) + domluvit s Tomášem eventy z appky
-- [ ] **Jakub:** Připravit podklad pro Slack report (jaká data, odkud, v jakém formátu)
-- [ ] **Verča:** Sdílet style guide + research scraper s týmem
+- [ ] Finalizovat zápis + to-do list, rozeslat týmu
+- [ ] Vybrat si téma na svůj lead magnet a promyslet story (proč je tam, kam v journey zapadá)
+- [ ] Sepsat do společného chatu, co kdo aktuálně používá (commands, skills, MCPs)
+- [ ] Prozkoumat Brevo MCP a AT v Cursoru → nachystat vlastní lead flow (bez Make.com)
+- [ ] Doladit analytiku — eventy na webu (aibility.org) + domluvit s Tomášem eventy z appky
+- [ ] Připravit podklad pro Slack report (jaká data, odkud, v jakém formátu)
+- [ ] Sdílet style guide + research scraper s týmem
 
 ### Úterý — meeting s Filipem/Tomem
 
@@ -147,30 +147,30 @@
 ### Příští týden — lead magnety + assessment kampaň
 
 **Lead magnety (priorita #1):**
-- [ ] **Každý:** Udělat svůj lead magnet end-to-end (materiál + landing + kampaň + social content)
-- [ ] **TBD:** Postavit landing pages na aibility.org pro lead magnety
-- [ ] **Verča:** Připravit varianty copy pro landing pages + content ke každému lead magnetu
-- [ ] **Jakub:** Připravit kampaně na lead magnety (Meta, LinkedIn) + nastavit tracking
+- [ ] Udělat svůj lead magnet end-to-end (materiál + landing + kampaň + social content)
+- [ ] Postavit landing pages na aibility.org pro lead magnety
+- [ ] Připravit varianty copy pro landing pages + content ke každému lead magnetu
+- [ ] Připravit kampaně na lead magnety (Meta, LinkedIn) + nastavit tracking
 
 **Free assessment kampaň (priorita #2 — připravit, spustit jakmile je assessment ready):**
-- [ ] **TBD:** Připravit/upravit landing page pro free assessment (A/B varianty headlines)
-- [ ] **Verča:** Copy varianty pro assessment landing + ad creatives
-- [ ] **Jakub:** Nachystat kampaně na free assessment (Meta, LinkedIn, případně Google)
-- [ ] **Jakub:** Nastavit remarketing audiences (po 1000+ návštěvách)
+- [ ] Připravit/upravit landing page pro free assessment (A/B varianty headlines)
+- [ ] Copy varianty pro assessment landing + ad creatives
+- [ ] Nachystat kampaně na free assessment (Meta, LinkedIn, případně Google)
+- [ ] Nastavit remarketing audiences (po 1000+ návštěvách)
 
 ### Průběžně / Q2
 
 - [ ] Spustit kampaně (lead magnety → assessment → paid report)
 - [ ] A/B test pricing paid reportu
-- [ ] **TBD:** Nastavit páteční Slack report s AI doporučeními
-- [ ] **TBD:** Zmapovat tooling všech → vytvořit sdílené rules/skills/commands v gitu
-- [ ] **TBD:** Přebudovat newsletter na SP™ koncept (archetypy, community highlights, CTA na assessment)
+- [ ] Nastavit páteční Slack report s AI doporučeními
+- [ ] Zmapovat tooling všech → vytvořit sdílené rules/skills/commands v gitu
+- [ ] Přebudovat newsletter na SP™ koncept (archetypy, community highlights, CTA na assessment)
 - [ ] Sponzorování LinkedIn postů z osobních profilů (když bude co boostovat)
 - [ ] Personalizované lead magnety na základě assessmentu (až poběží)
 
 ### Do budoucna (ne teď)
 
-- [ ] AI influencer profily / micro-influenceři — zajímavé, ale teď generujeme leady a peníze
+- [ ] AI influencer profily / micro-influenceři
 - [ ] Podcast / nové formáty
 - [ ] Interní agent pro celý marketing workflow
 
