@@ -2,6 +2,8 @@
 
 **27. března 2026 · Marketing team**
 
+> **Zápis z brainstormingu + TO-DO →** [SP Brainstorm — Zápis & Action Steps](https://anetalizancova-mdshare.vercel.app/sp-brainstorm-zapisy)
+
 ---
 
 ## Co dnes řešíme
