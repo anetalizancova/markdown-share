@@ -49,7 +49,7 @@ function extractToc(content: string): TocItem[] {
 
 const NOTABLE_SECTIONS = new Set([
   "5-klicovych-rozhodnuti",
-  "quick-wins-zaciname-zitra",
+  "quick-wins",
   "revenue-model",
   "ownership",
   "otevrene-otazky",
