@@ -65,13 +65,6 @@
 
 ## 1. Produktová architektura
 
-### 📝 Poznámky / komentáře
-
-
-
-
-
-
 ```
 ┌────────────────────────────────────────────────────────────────────┐
 │                         FREE TIER                                  │
@@ -219,13 +212,6 @@ Assessment start (hned, bez emailu)
 ---
 
 ## 3. Marketing Engine — architektura
-
-### 📝 Poznámky / komentáře
-
-
-
-
-
 
 ### Principy
 
@@ -415,13 +401,6 @@ Follow-up: upsell na Foundation / Build program / B2B
 
 ## 6. Flow: SP™ Programy (Foundation / Build / Coach)
 
-### 📝 Poznámky / komentáře
-
-
-
-
-
-
 ### SP™ Foundation (~5k CZK)
 
 ```
@@ -479,13 +458,6 @@ Stejný flow, ale:
 ---
 
 ## 7. Flow: Webináře & Events
-
-### 📝 Poznámky / komentáře
-
-
-
-
-
 
 Webináře = hlavní lead gen nástroj. Každý webinář je "SP™ pro [téma]".
 
@@ -619,13 +591,6 @@ Review + approve [člověk]
 
 ## 9. Flow: Content & Social
 
-### 📝 Poznámky / komentáře
-
-
-
-
-
-
 ### Content pipeline
 
 ```
@@ -682,13 +647,6 @@ Dashboard: co fungovalo → feedback do budoucí tvorby
 
 ## 10. Flow: Newsletter
 
-### 📝 Poznámky / komentáře
-
-
-
-
-
-
 ### Jak newsletter vzniká
 
 ```
@@ -719,13 +677,6 @@ Uloženo v: content/emails/SP-newsletter/[datum]/
 ---
 
 ## 11. AI agenti — detail
-
-### 📝 Poznámky / komentáře
-
-
-
-
-
 
 ### Přehled
 
@@ -903,13 +854,6 @@ Implementace: Brevo automation
 ---
 
 ## 13. Kanály
-
-### 📝 Poznámky / komentáře
-
-
-
-
-
 
 ### Kanálový plán
 
@@ -1097,13 +1041,6 @@ Musí být nastavený PŘED kampaněmi.
 ---
 
 ## 17. B2B motion
-
-### 📝 Poznámky / komentáře
-
-
-
-
-
 
 B2B řeší primárně Žaneta. Marketing dodává:
 
