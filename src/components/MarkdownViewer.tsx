@@ -185,7 +185,7 @@ export default function MarkdownViewer({
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              input({ type, checked, ...props }) {
+              input({ type, checked, disabled, node, ...rest }) {
                 if (type === "checkbox") {
                   const idx = checkboxCounter.current++;
                   const isChecked = checkedTasks[idx] ?? !!checked;
@@ -195,11 +195,10 @@ export default function MarkdownViewer({
                       checked={isChecked}
                       onChange={() => toggleTask(idx)}
                       className="task-checkbox"
-                      {...props}
                     />
                   );
                 }
-                return <input type={type} checked={checked} {...props} />;
+                return <input type={type} checked={checked} disabled={disabled} {...rest} />;
               },
               li({ children, className, ...props }) {
                 const isTask = className?.includes("task-list-item");
