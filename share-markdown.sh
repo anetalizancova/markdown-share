@@ -3,7 +3,7 @@
 # Script pro sdílení markdown souboru
 # Použití: ./share-markdown.sh [cesta-k-souboru.md] [slug]
 
-MARKDOWN_SHARE_DIR="/Users/anetalizancova/Aibility_marketing brain/markdown-share"
+MARKDOWN_SHARE_DIR="/Users/anetalizancova/Aibility_marketing brain/PACT/4_Tools/markdown-share"
 SOURCE_FILE="$1"
 SLUG="$2"
 
