@@ -79,6 +79,8 @@ export default function MarkdownViewer({
   const isMeetingNotesPage = slug in MEETING_PAGES;
   const [sectionNotes, setSectionNotes] = useState<Record<string, string>>({});
   const [checkedTasks, setCheckedTasks] = useState<Record<number, boolean>>({});
+  const [taskNotes, setTaskNotes] = useState<Record<number, string>>({});
+  const [openNoteIdx, setOpenNoteIdx] = useState<number | null>(null);
   const checkboxCounter = useRef(0);
 
   useEffect(() => {
@@ -95,6 +97,10 @@ export default function MarkdownViewer({
       const savedTasks = window.localStorage.getItem(`tasks:${slug}`);
       if (savedTasks) setCheckedTasks(JSON.parse(savedTasks));
     } catch {}
+    try {
+      const savedTaskNotes = window.localStorage.getItem(`taskNotes:${slug}`);
+      if (savedTaskNotes) setTaskNotes(JSON.parse(savedTaskNotes));
+    } catch {}
   }, [isMeetingNotesPage, slug]);
 
   const updateSectionNote = (sectionId: string, value: string) => {
@@ -109,6 +115,14 @@ export default function MarkdownViewer({
     setCheckedTasks((prev) => {
       const next = { ...prev, [idx]: !prev[idx] };
       try { window.localStorage.setItem(`tasks:${slug}`, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }, [slug]);
+
+  const updateTaskNote = useCallback((idx: number, value: string) => {
+    setTaskNotes((prev) => {
+      const next = { ...prev, [idx]: value };
+      try { window.localStorage.setItem(`taskNotes:${slug}`, JSON.stringify(next)); } catch {}
       return next;
     });
   }, [slug]);
@@ -202,9 +216,50 @@ export default function MarkdownViewer({
               },
               li({ children, className, ...props }) {
                 const isTask = className?.includes("task-list-item");
+                if (!isTask) {
+                  return <li className={className} {...props}>{children}</li>;
+                }
+                const taskIdx = checkboxCounter.current - 1;
+                const note = taskNotes[taskIdx] || "";
+                const isOpen = openNoteIdx === taskIdx;
+                const hasNote = note.length > 0;
                 return (
-                  <li className={isTask ? "task-list-item" : className} {...props}>
-                    {children}
+                  <li className="task-list-item" {...props}>
+                    <div className="task-content">
+                      <div className="task-main-row">
+                        {children}
+                        <button
+                          className={`task-note-toggle${hasNote ? " has-note" : ""}`}
+                          onClick={() => setOpenNoteIdx(isOpen ? null : taskIdx)}
+                          title={hasNote ? "Upravit poznámku" : "Přidat poznámku"}
+                        >
+                          {hasNote ? "📝" : "✏️"}
+                        </button>
+                      </div>
+                      {hasNote && !isOpen && (
+                        <div
+                          className="task-note-preview"
+                          onClick={() => setOpenNoteIdx(taskIdx)}
+                        >
+                          {note}
+                        </div>
+                      )}
+                      {isOpen && (
+                        <input
+                          className="task-note-input"
+                          type="text"
+                          placeholder="Poznámka, úprava, komentář..."
+                          value={note}
+                          onChange={(e) => updateTaskNote(taskIdx, e.target.value)}
+                          autoFocus
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === "Escape") {
+                              setOpenNoteIdx(null);
+                            }
+                          }}
+                        />
+                      )}
+                    </div>
                   </li>
                 );
               },
