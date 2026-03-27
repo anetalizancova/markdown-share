@@ -34,11 +34,7 @@
 
 ## 0. Kontext
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+
 
 ### Finanční realita (meeting 25.3.)
 
@@ -69,11 +65,12 @@
 
 ## 1. Produktová architektura
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -149,11 +146,12 @@
 
 ## 2. Jeden funnel, jeden směr
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ```
 VŠECHNY kanály → JEDEN message → JEDEN CTA
@@ -222,11 +220,12 @@ Assessment start (hned, bez emailu)
 
 ## 3. Marketing Engine — architektura
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Principy
 
@@ -287,11 +286,12 @@ Assessment start (hned, bez emailu)
 
 ## 4. Flow: Free Assessment
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Co potřebujeme, aby free assessment fungoval jako lead gen mašina.
 
@@ -355,11 +355,12 @@ Uživatel sdílí kartu na LinkedIn / social
 
 ## 5. Flow: Paid Report
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### User journey
 
@@ -414,11 +415,12 @@ Follow-up: upsell na Foundation / Build program / B2B
 
 ## 6. Flow: SP™ Programy (Foundation / Build / Coach)
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### SP™ Foundation (~5k CZK)
 
@@ -478,11 +480,12 @@ Stejný flow, ale:
 
 ## 7. Flow: Webináře & Events
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Webináře = hlavní lead gen nástroj. Každý webinář je "SP™ pro [téma]".
 
@@ -529,11 +532,12 @@ PO WEBINÁŘI:
 
 ## 8. Flow: Kampaně (lead gen + assessment promo)
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Tohle je srdce engine. Jeden command → kompletní kampaň.
 
@@ -615,11 +619,12 @@ Review + approve [člověk]
 
 ## 9. Flow: Content & Social
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Content pipeline
 
@@ -677,11 +682,12 @@ Dashboard: co fungovalo → feedback do budoucí tvorby
 
 ## 10. Flow: Newsletter
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Jak newsletter vzniká
 
@@ -714,11 +720,12 @@ Uloženo v: content/emails/SP-newsletter/[datum]/
 
 ## 11. AI agenti — detail
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Přehled
 
@@ -820,11 +827,12 @@ Uloženo v: content/emails/SP-newsletter/[datum]/
 
 ## 12. Automatizace & email sekvence
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Lead capture + assessment completion automatizace (P0)
 
@@ -896,11 +904,12 @@ Implementace: Brevo automation
 
 ## 13. Kanály
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Kanálový plán
 
@@ -963,11 +972,12 @@ Implementace: Brevo automation
 
 ## 14. Sdílený tooling — commands, rules, MCPs
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Princip: Celý tým používá stejný setup
 
@@ -1005,11 +1015,12 @@ Každý člen týmu doplní svůj stack a workflow asynchronně.
 
 ## 15. Dashboard & reporting
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Žádné tabulky. Rovnou vibecodovaný dashboard.
 
@@ -1057,11 +1068,12 @@ Každý člen týmu doplní svůj stack a workflow asynchronně.
 
 ## 16. Tracking stack
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Musí být nastavený PŘED kampaněmi.
 
@@ -1086,11 +1098,12 @@ Musí být nastavený PŘED kampaněmi.
 
 ## 17. B2B motion
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 B2B řeší primárně Žaneta. Marketing dodává:
 
@@ -1120,11 +1133,12 @@ B2B řeší primárně Žaneta. Marketing dodává:
 
 ## 18. Action plan
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Všechno paralelně, AI-first, think big. Nejdřív si říct co a jak, pak jet.
 
@@ -1272,11 +1286,12 @@ Použít tento model pro plánování: kolik leadů potřebujeme, jaký budget d
 
 ## 19. Ownership
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 Tato sekce zůstává záměrně otevřená (pro komentáře/doplnění v live verzi).
 
@@ -1296,11 +1311,12 @@ Tato sekce zůstává záměrně otevřená (pro komentáře/doplnění v live v
 
 ## 20. Otevřené otázky
 
-### 📝 Poznámky z meetingu (live)
-- Rozhodnutí:
-- Otázky:
-- TODO:
-- Poznámky z Wisprflow:
+### 📝 Poznámky / komentáře
+
+
+
+
+
 
 ### Tým & tooling
 
