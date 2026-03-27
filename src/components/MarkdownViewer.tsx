@@ -47,17 +47,26 @@ function extractToc(content: string): TocItem[] {
   return items;
 }
 
-const NOTABLE_SECTIONS = new Set([
-  "5-klicovych-rozhodnuti",
-  "quick-wins",
-  "revenue-model",
-  "ownership",
-  "otevrene-otazky",
-]);
+const MEETING_PAGES: Record<string, Set<string>> = {
+  "sp-marketing-engine-brainstorm": new Set([
+    "5-klicovych-rozhodnuti",
+    "quick-wins",
+    "revenue-model",
+    "ownership",
+    "otevrene-otazky",
+  ]),
+  "sp-brainstorm-zapisy": new Set([
+    "klicova-rozhodnuti",
+    "priority",
+    "to-do--action-steps",
+    "otevrene-otazky",
+  ]),
+};
 
-function shouldShowNote(id: string, isMeeting: boolean): boolean {
-  if (!isMeeting) return false;
-  return NOTABLE_SECTIONS.has(id);
+function shouldShowNote(id: string, slug: string): boolean {
+  const sections = MEETING_PAGES[slug];
+  if (!sections) return false;
+  return sections.has(id);
 }
 
 export default function MarkdownViewer({
@@ -67,7 +76,7 @@ export default function MarkdownViewer({
 }: MarkdownViewerProps) {
   const toc = extractToc(content);
   const [shareUrl, setShareUrl] = useState("");
-  const isMeetingNotesPage = slug === "sp-marketing-engine-brainstorm";
+  const isMeetingNotesPage = slug in MEETING_PAGES;
   const [sectionNotes, setSectionNotes] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -115,7 +124,7 @@ export default function MarkdownViewer({
   };
 
   const noteBlock = (id: string) =>
-    shouldShowNote(id, isMeetingNotesPage) ? (
+    shouldShowNote(id, slug) ? (
       <div className="section-note-wrap">
         <label className="section-note-label">Poznámky z meetingu</label>
         <textarea
