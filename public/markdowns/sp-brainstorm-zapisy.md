@@ -130,10 +130,10 @@
 
 ### Tento týden (ASAP)
 
-- [ ] **Aneta:** Stáhnout transkript, finalizovat tento zápis + to-do list, rozeslat týmu
-- [ ] **Každý (Aneta, Jakub, Verča):** Vybrat si téma na svůj lead magnet a promyslet story (proč je tam, kam v journey zapadá)
-- [ ] **Aneta:** Napsat do společného chatu / dokumentu, co kdo aktuálně používá (commands, skills, MCPs) — každý doplní za sebe
-- [ ] **Aneta:** Prozkoumat Brevo MCP a AT v Cursoru → nachystat vlastní lead flow (bez Make.com)
+- [ ] **Aneta:** Finalizovat zápis + to-do list, rozeslat týmu
+- [ ] **Každý:** Vybrat si téma na svůj lead magnet a promyslet story (proč je tam, kam v journey zapadá)
+- [ ] **Každý:** Sepsat do společného chatu, co kdo aktuálně používá (commands, skills, MCPs)
+- [ ] **TBD:** Prozkoumat Brevo MCP a AT v Cursoru → nachystat vlastní lead flow (bez Make.com)
 - [ ] **Jakub:** Doladit analytiku — eventy na webu (aibility.org) + domluvit s Tomášem eventy z appky
 - [ ] **Jakub:** Připravit podklad pro Slack report (jaká data, odkud, v jakém formátu)
 - [ ] **Verča:** Sdílet style guide + research scraper s týmem
@@ -148,26 +148,23 @@
 
 **Lead magnety (priorita #1):**
 - [ ] **Každý:** Udělat svůj lead magnet end-to-end (materiál + landing + kampaň + social content)
-- [ ] **Aneta:** Postavit landing pages na aibility.org pro lead magnety
-- [ ] **Aneta:** Nastavit celou lead flow v Brevo — tagy, welcome sekvence, upsell na assessment, CTA
-- [ ] **Verča:** Připravit varianty copy pro landing pages + social content ke každému lead magnetu
+- [ ] **TBD:** Postavit landing pages na aibility.org pro lead magnety
+- [ ] **Verča:** Připravit varianty copy pro landing pages + content ke každému lead magnetu
 - [ ] **Jakub:** Připravit kampaně na lead magnety (Meta, LinkedIn) + nastavit tracking
 
 **Free assessment kampaň (priorita #2 — připravit, spustit jakmile je assessment ready):**
-- [ ] **Aneta:** Připravit landing page pro free assessment (A/B varianty headlines)
-- [ ] **Aneta:** Nastavit mailing flow za assessmentem — post-assessment sekvence, upsell paid report, CTA na Foundation
-- [ ] **Jakub:** Připravit A/B test headlines na assessment landing
+- [ ] **TBD:** Připravit/upravit landing page pro free assessment (A/B varianty headlines)
+- [ ] **Verča:** Copy varianty pro assessment landing + ad creatives
 - [ ] **Jakub:** Nachystat kampaně na free assessment (Meta, LinkedIn, případně Google)
 - [ ] **Jakub:** Nastavit remarketing audiences (po 1000+ návštěvách)
-- [ ] **Verča:** Copy varianty pro assessment landing + ad creatives
 
 ### Průběžně / Q2
 
 - [ ] Spustit kampaně (lead magnety → assessment → paid report)
 - [ ] A/B test pricing paid reportu
-- [ ] Nastavit páteční Slack report s AI doporučeními
-- [ ] Zmapovat tooling všech → vytvořit sdílené rules/skills/commands v gitu
-- [ ] Přebudovat newsletter na SP™ koncept (archetypy, community highlights, CTA na assessment)
+- [ ] **TBD:** Nastavit páteční Slack report s AI doporučeními
+- [ ] **TBD:** Zmapovat tooling všech → vytvořit sdílené rules/skills/commands v gitu
+- [ ] **TBD:** Přebudovat newsletter na SP™ koncept (archetypy, community highlights, CTA na assessment)
 - [ ] Sponzorování LinkedIn postů z osobních profilů (když bude co boostovat)
 - [ ] Personalizované lead magnety na základě assessmentu (až poběží)
 
