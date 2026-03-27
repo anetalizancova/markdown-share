@@ -22,11 +22,15 @@ const headingRegex = /^(#{2,4})\s+(.+)$/gm;
 
 function slugify(text: string) {
   return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, "")
+    .trim()
     .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function extractToc(content: string): TocItem[] {
@@ -45,8 +49,8 @@ function extractToc(content: string): TocItem[] {
 
 const NOTABLE_SECTIONS = new Set([
   "5-klicovych-rozhodnuti",
-  "-quick-wins--zacinme-zitra",
-  "-revenue-model",
+  "quick-wins-zaciname-zitra",
+  "revenue-model",
   "ownership",
   "otevrene-otazky",
 ]);
