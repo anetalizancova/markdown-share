@@ -34,7 +34,7 @@ Jeden produkt. Jeden funnel. Jeden engine.
 - [ ] Meta Pixel + CAPI · LinkedIn Insight Tag
 - [ ] Definovat events: `assessment_started` · `completed` · `email_captured` · `paid_purchased`
 
-### Content sprint (4–6 týdnů dopředu)
+### Content sprint
 
 - [ ] Atomizovat vše co máme (blogy, metodologie, archetypy, webináře)
 - [ ] Vizuály: infografiky, ukázky výsledků, before/after, archetyp karty
@@ -498,7 +498,7 @@ Registrace → After-registration email → Reminder 1 den před → Reminder 1h
 - [ ] Celý tracking stack na superpowered.pro (GTM, GA4, PostHog, Meta Pixel, LinkedIn Tag)
 
 **Content sprint:**
-- [ ] Atomizovat vše → 4–6 týdnů content dopředu
+- [ ] Atomizovat vše co máme → content ASAP
 - [ ] Vizuály + video + interaktivní formáty
 - [ ] 3–4 lead magnety připravit
 
