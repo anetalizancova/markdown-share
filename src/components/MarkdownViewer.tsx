@@ -43,6 +43,19 @@ function extractToc(content: string): TocItem[] {
   return items;
 }
 
+const NOTABLE_SECTIONS = new Set([
+  "5-klicovych-rozhodnuti",
+  "-quick-wins--zacinme-zitra",
+  "-revenue-model",
+  "ownership",
+  "otevrene-otazky",
+]);
+
+function shouldShowNote(id: string, isMeeting: boolean): boolean {
+  if (!isMeeting) return false;
+  return NOTABLE_SECTIONS.has(id);
+}
+
 export default function MarkdownViewer({
   slug,
   title,
@@ -89,15 +102,26 @@ export default function MarkdownViewer({
           text: `Sdílej tento markdown: ${title}`,
           url: shareUrl,
         });
-      } catch (err) {
+      } catch {
         // User cancelled or error
       }
     } else {
-      // Fallback: copy to clipboard
       navigator.clipboard.writeText(shareUrl);
-      // Could add toast notification here
     }
   };
+
+  const noteBlock = (id: string) =>
+    shouldShowNote(id, isMeetingNotesPage) ? (
+      <div className="section-note-wrap">
+        <label className="section-note-label">Poznámky z meetingu</label>
+        <textarea
+          className="section-note-input"
+          placeholder="Piš poznámky ke sekci..."
+          value={sectionNotes[id] || ""}
+          onChange={(e) => updateSectionNote(id, e.target.value)}
+        />
+      </div>
+    ) : null;
 
   return (
     <div className="page">
@@ -152,56 +176,26 @@ export default function MarkdownViewer({
                 const id = slugify(text);
                 return (
                   <>
-                    <h2 id={id} {...props}>
-                      {children}
-                    </h2>
-                    {isMeetingNotesPage ? (
-                      <textarea
-                        className="section-note-input"
-                        placeholder="Piš poznámky ke sekci..."
-                        value={sectionNotes[id] || ""}
-                        onChange={(e) => updateSectionNote(id, e.target.value)}
-                      />
-                    ) : null}
+                    <h2 id={id} {...props}>{children}</h2>
+                    {noteBlock(id)}
                   </>
                 );
               },
               h3({ children, ...props }) {
                 const text = String(children);
                 const id = slugify(text);
-                return (
-                  <>
-                    <h3 id={id} {...props}>
-                      {children}
-                    </h3>
-                    {isMeetingNotesPage ? (
-                      <textarea
-                        className="section-note-input"
-                        placeholder="Piš poznámky ke sekci..."
-                        value={sectionNotes[id] || ""}
-                        onChange={(e) => updateSectionNote(id, e.target.value)}
-                      />
-                    ) : null}
-                  </>
-                );
+                return <h3 id={id} {...props}>{children}</h3>;
               },
               h4({ children, ...props }) {
                 const text = String(children);
                 const id = slugify(text);
+                return <h4 id={id} {...props}>{children}</h4>;
+              },
+              table({ children, ...props }) {
                 return (
-                  <>
-                    <h4 id={id} {...props}>
-                      {children}
-                    </h4>
-                    {isMeetingNotesPage ? (
-                      <textarea
-                        className="section-note-input"
-                        placeholder="Piš poznámky ke sekci..."
-                        value={sectionNotes[id] || ""}
-                        onChange={(e) => updateSectionNote(id, e.target.value)}
-                      />
-                    ) : null}
-                  </>
+                  <div className="table-wrap">
+                    <table {...props}>{children}</table>
+                  </div>
                 );
               },
             }}
