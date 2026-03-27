@@ -10,7 +10,7 @@ Jeden produkt. Jeden funnel. Jeden engine.
 
 **5 věcí, na kterých se musíme dohodnout:**
 
-1. **Co děláme HNED** — quick wins, které spustíme zítra
+1. **Co děláme HNED** — quick wins
 2. **Jak vypadá funnel** — assessment + lead magnety jako priorita č.1
 3. **Jak to technicky poběží** — engine, agenti, sdílený tooling
 4. **Kolik potřebujeme vydělat** — revenue model, funnel matematika
