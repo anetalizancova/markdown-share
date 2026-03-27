@@ -66,56 +66,77 @@ Jeden produkt. Jeden funnel. Jeden engine.
 
 ### Kontext
 
-Runway ~6–9 měsíců. Cíl: break-even do léta. Každá aktivita musí mít přímou linku na revenue.
+Runway ~6–9 měsíců. Měsíční náklady ~1.4M CZK, revenue ~700k/měsíc. Gap ~700k/měsíc. SP™ musí tento gap uzavírat.
+
+### Jak na to koukáme: LTV, ne single-purchase
+
+Paid report za ~950 CZK sám o sobě nepokryje akvizici. Ale paid report **není konečný produkt** — je to kvalifikační krok. Člověk, který koupí report, má 10–20× vyšší šanci jít do Foundation nebo přivést svou firmu na B2B.
+
+| Krok | Cena | Konverze z předchozího | Revenue per lead (vážený) |
+|:-----|-----:|:----------------------:|:--------------------------|
+| Free assessment | 0 | — | 0 CZK |
+| Paid report | ~950 CZK | 5% z free | ~48 CZK / lead |
+| Foundation | 5 000 CZK | 10–15% z paid | ~25–36 CZK / lead |
+| Build | 15 000 CZK | 5% z paid | ~38 CZK / lead |
+| B2B (z leads pool) | ~250 000 CZK | 0.3% z free | ~750 CZK / lead |
+| **Průměrné LTV per lead** | | | **~860–870 CZK** |
+
+> Při CPL 80–200 CZK a průměrném LTV ~860 CZK per lead vychází **ROAS 4–10×**. Funnel se vyplatí, ale jen pokud fungují upselly za reportem.
 
 ### Funnel matematika (měsíčně)
 
 | Krok funnelu | Metrika | 🔴 Konzervativní | 🟡 Realistický | 🟢 Optimistický |
 |:-------------|:--------|------------------:|---------------:|----------------:|
-| Landing visits | /měsíc | 1 500 | 3 000 | 6 000 |
-| → Assessment started | 40–60% | 600 | 1 500 | 3 600 |
-| → Completed + email | 50–70% | 300 | 900 | 2 500 |
-| → Paid report | 3–6% | 9 | 45 | 150 |
-| **Paid report revenue** | ~950 CZK | **8 550 CZK** | **42 750 CZK** | **142 500 CZK** |
+| Landing visits | /měsíc | 2 000 | 5 000 | 10 000 |
+| → Assessment started | 40–60% | 800 | 2 500 | 6 000 |
+| → Completed + email | 50–70% | 400 | 1 500 | 4 000 |
+| → Paid report | 5% | 20 | 75 | 200 |
+| → Foundation (z paid) | 12% | 2 | 9 | 24 |
+| → B2B opportunity | 0.3% | 1 | 4 | 12 |
 
-### Q2 revenue mix (duben–červen)
+### Q2 revenue target (duben–červen)
 
 | Zdroj | Jednotky | Cena | Revenue odhad |
 |:------|:--------:|-----:|--------------:|
-| Paid reports | 40–80 | ~950 CZK | 38–76k CZK |
-| SP Foundation #1 | 50–100 | 5 000 CZK | 250–500k CZK |
-| B2B piloty | 2–3 | 150–380k CZK | 300k–1.1M CZK |
-| **CELKEM Q2** | | | **~600k–1.7M CZK** |
+| Paid reports | 80–150 | ~950 CZK | 76–142k CZK |
+| SP Foundation (1–2 běhy) | 100–200 | 5 000 CZK | 500k–1M CZK |
+| B2B piloty | 3–5 | 200–400k CZK | 600k–2M CZK |
+| **CELKEM Q2** | | | **~1.2M–3.1M CZK** |
 
-> **Klíčový insight:** Paid reports = validace + micro-revenue. Reálné peníze přijdou z B2B + Foundation. Assessment je TOP of funnel pro všechno.
+### Akvizice — multi-channel odhad (měsíčně)
 
-### Akvizice — odhad nákladů
+| Kanál | Budget / měsíc | CPL odhad | Leady / měsíc |
+|:------|---------------:|----------:|--------------:|
+| Meta (FB + IG) | 30–50k CZK | 80–150 CZK | 200–625 |
+| LinkedIn | 20–40k CZK | 150–300 CZK | 67–267 |
+| Google Ads | 15–30k CZK | 100–200 CZK | 75–300 |
+| Reddit | 5–10k CZK | 50–150 CZK | 33–200 |
+| TikTok | 5–15k CZK | 30–100 CZK | 50–500 |
+| X Ads | 5–10k CZK | 80–200 CZK | 25–125 |
+| **CELKEM paid** | **80–155k CZK** | | **450–2 000** |
+| Organic + viral + NL | 0 | 0 | 200–1 000+ |
 
-| Metrika | Odhad | Poznámka |
-|:--------|------:|:---------|
-| CPL (cost per lead) | 80–200 CZK | Meta + LinkedIn, CZ trh |
-| CAC (paid report) | 1 500–5 000 CZK | Závisí na conversion rate |
-| Test ad spend / měsíc | 20–50k CZK | Začít nízko, škálovat dle dat |
-| Break-even paid report | CPL < 150 + conv > 5% | Přepočítat po 2 týdnech reálných dat |
+> **Strategie:** Začít s Meta + LinkedIn (ověřené), Google (intent). Reddit/TikTok/X testovat s malým budgetem. Škálovat co funguje, zabít co ne. Přepočítat po 2 týdnech reálných dat.
 
 ### Revenue milestones Q2
 
-- [ ] **500+** dokončených free assessmentů
-- [ ] **40+** paid reportů
-- [ ] **2+** B2B piloty (pipeline ~4M CZK)
-- [ ] **SP Foundation #1** proběhl (květen/červen)
-- [ ] Dashboard live, weekly Slack report + AI doporučení
+- [ ] **1 000+** dokončených free assessmentů
+- [ ] **80+** paid reportů
+- [ ] **3+** B2B piloty (pipeline ~4M CZK)
+- [ ] **SP Foundation #1** proběhl, **#2** naplánovaný
+- [ ] Dashboard live, weekly report + AI doporučení
+- [ ] Paid ads ROAS > 4×
 
-### Metriky k průběžnému sledování
+### Metriky k sledování
 
-| Metrika | Vzorec |
-|:--------|:-------|
-| CPL | Ad spend / Leads |
-| Assessment completion rate | Completed / Started |
-| Paid conversion rate | Paid / Completed |
-| CAC | Total spend / Paid customers |
-| LTV | Průměrný revenue per customer (report + upsell) |
-| Funnel drop-off | Kde odcházejí a proč |
+| Metrika | Vzorec | Proč |
+|:--------|:-------|:-----|
+| CPL | Ad spend / Leads | Cena za lead per kanál |
+| LTV | Celkový revenue / Počet leadů | Kolik vydělá 1 lead přes celý funnel |
+| ROAS | LTV / CPL | Musí být > 4× aby to dávalo smysl |
+| Paid conversion | Paid / Completed free | Cíl: > 5% |
+| Foundation conversion | Foundation / Paid | Cíl: > 10% |
+| Funnel drop-off | Kde odcházejí | Optimalizovat nejslabší krok |
 
 ---
 
