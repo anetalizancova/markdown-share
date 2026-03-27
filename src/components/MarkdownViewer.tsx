@@ -50,10 +50,36 @@ export default function MarkdownViewer({
 }: MarkdownViewerProps) {
   const toc = extractToc(content);
   const [shareUrl, setShareUrl] = useState("");
+  const isMeetingNotesPage = slug === "sp-marketing-engine-brainstorm";
+  const [sectionNotes, setSectionNotes] = useState<Record<string, string>>({});
 
   useEffect(() => {
     setShareUrl(window.location.href);
   }, []);
+
+  useEffect(() => {
+    if (!isMeetingNotesPage) return;
+    try {
+      const saved = window.localStorage.getItem(`notes:${slug}`);
+      if (saved) {
+        setSectionNotes(JSON.parse(saved));
+      }
+    } catch {
+      // ignore localStorage parsing errors
+    }
+  }, [isMeetingNotesPage, slug]);
+
+  const updateSectionNote = (sectionId: string, value: string) => {
+    setSectionNotes((prev) => {
+      const next = { ...prev, [sectionId]: value };
+      try {
+        window.localStorage.setItem(`notes:${slug}`, JSON.stringify(next));
+      } catch {
+        // ignore localStorage errors
+      }
+      return next;
+    });
+  };
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -125,27 +151,57 @@ export default function MarkdownViewer({
                 const text = String(children);
                 const id = slugify(text);
                 return (
-                  <h2 id={id} {...props}>
-                    {children}
-                  </h2>
+                  <>
+                    <h2 id={id} {...props}>
+                      {children}
+                    </h2>
+                    {isMeetingNotesPage ? (
+                      <textarea
+                        className="section-note-input"
+                        placeholder="Piš poznámky ke sekci..."
+                        value={sectionNotes[id] || ""}
+                        onChange={(e) => updateSectionNote(id, e.target.value)}
+                      />
+                    ) : null}
+                  </>
                 );
               },
               h3({ children, ...props }) {
                 const text = String(children);
                 const id = slugify(text);
                 return (
-                  <h3 id={id} {...props}>
-                    {children}
-                  </h3>
+                  <>
+                    <h3 id={id} {...props}>
+                      {children}
+                    </h3>
+                    {isMeetingNotesPage ? (
+                      <textarea
+                        className="section-note-input"
+                        placeholder="Piš poznámky ke sekci..."
+                        value={sectionNotes[id] || ""}
+                        onChange={(e) => updateSectionNote(id, e.target.value)}
+                      />
+                    ) : null}
+                  </>
                 );
               },
               h4({ children, ...props }) {
                 const text = String(children);
                 const id = slugify(text);
                 return (
-                  <h4 id={id} {...props}>
-                    {children}
-                  </h4>
+                  <>
+                    <h4 id={id} {...props}>
+                      {children}
+                    </h4>
+                    {isMeetingNotesPage ? (
+                      <textarea
+                        className="section-note-input"
+                        placeholder="Piš poznámky ke sekci..."
+                        value={sectionNotes[id] || ""}
+                        onChange={(e) => updateSectionNote(id, e.target.value)}
+                      />
+                    ) : null}
+                  </>
                 );
               },
             }}
