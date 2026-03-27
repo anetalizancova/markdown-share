@@ -18,7 +18,7 @@ Jeden produkt. Jeden funnel. Jeden engine.
 
 ---
 
-## ⚡ Quick wins — začínáme ZÍTRA
+## ⚡ Quick wins
 
 ### Engine (hodiny práce → okamžitý dopad)
 
