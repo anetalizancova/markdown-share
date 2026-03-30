@@ -12,15 +12,48 @@ Každý lead magnet musí:
 - Mít jasný příběh (proč existuje, kam v journey zapadá)
 - Být praktický a okamžitě užitečný (ne "Co je SP™")
 - Mít CTA na free assessment — v materiálu i na thank you page
-- Fungovat i BEZ hotového assessmentu (waiting list jako fallback)
 
 Tom: *"Pracujte s personalizací — to nikdo nedělá. Tady máš obecných 30 promptů, nebo si udělej assessment a my ti jich dáme 40 na míru."*
 
 ---
 
-## 7 Návrhů Lead Magnetů
+## Kdo co dělá — první vlna
 
-> Vybíráme 3 ke spuštění. Zbytek = backlog pro další vlnu nebo A/B testy.
+Líbí se nám všechny formáty, ale **začínáme tak, že každý udělá jeden lead magnet end-to-end** (materiál + landing + kampaň + social content). Draft lead magnetu do středy na náš meeting, nemusí být komplet — osnova + copy, ať máme představu.
+
+| Kdo | Lead magnet | Stav |
+|-----|-------------|------|
+| **Verča** | **"Jak na vlastní mozek s AI"** — návod co to je, proč je to super, jak na to krok za krokem + prompt + Skill z Aimee, který pomůže ten systém vytvořit. Filipův framework (Capture, Clean...). Téma, které řeší každý napříč obory. | Draft do středy |
+| **Kuba** | **Konkrétní AI Skill / prompt** — vzít trending open source skill z GitHubu (impeccable apod.), upravit obsah (ne 100% kopie), přeložit do češtiny, přidat kontext a návod. Praktické, okamžitě použitelné. Subliminálně navádí na assessment. | Draft do středy |
+| **Aneta** | **Kalkulačka "Kolik času ztrácíte bez AI"** (#4) — interaktivní stránka, postavit prototyp v Cursoru s propojením na Brevo a AT. Nebo varianta s 10 prompty (#1). | Prototyp do středy |
+
+**Poznámka z meetingu 30.3.:** Flow a tagy v Brevo musíme mít nachystané PŘED spuštěním kampaní — jinak nebudeme vědět, co funguje. Aneta ověří Brevo tracking (eventy z webu, trigery na assessment started/completed).
+
+---
+
+## Assessment jako přímý lead magnet (shortcut varianta)
+
+Nemusíme lidi vždy chytat přes obsah. **Samotný free assessment může být lead magnet** — reklama → rovnou "Zjisti svůj AI profil za 10 minut" → člověk začne vyplňovat → email gate po ~8 otázkách.
+
+**Proč to stojí za test:**
+- Nulová produkční náročnost — assessment už existuje, stačí nasměrovat traffic
+- Nejkratší cesta k leadu — žádný mezikrok, žádný PDF ke stažení
+- Lidi, kteří projdou celým assessmentem, jsou nejkvalitnější leady (prokázali zájem + investovali čas)
+
+**Co je potřeba zvážit:**
+- Širší audience z reklamy bude mít vyšší drop-off — ne každý dokončí 10minutový test z cold trafficu
+- Kvalita leadů může být nižší než u lidí, kteří si nejdřív stáhli lead magnet (menší intent)
+- Je to experiment — pokud konverze z reklamy do dokončeného assessmentu bude rozumná, je to nejefektivnější kanál. Pokud ne, přesuneme budget na lead magnety
+
+**Doporučení:** Spustit jako A/B test paralelně s lead magnety. Jedna sada reklam → assessment přímo, druhá → lead magnet → assessment. Porovnat CPA (cost per assessment completed), ne jen CPL.
+
+**Brevo tag:** `sp-lead-assessment` (oddělený od `sp-lead-lm`, ať vidíme, co funguje líp)
+
+---
+
+## 9 Návrhů Lead Magnetů
+
+> Vybíráme 3 ke spuštění (viz výše). Zbytek = backlog pro další vlnu nebo A/B testy. + assessment jako přímý lead magnet (viz výše).
 
 ---
 
@@ -43,7 +76,7 @@ Ultra praktický, zero barrier, každý chápe "ušetřit čas". Filipa to na Li
 
 Lidi neví co je SP™. Musíme jim to vysvětlit v kontextu toho, co si právě stáhli — promptů.
 
-*Kde v materiálu:* Blok na konci PDF / sekce na stránce po posledním promptu.
+*Kde v materiálu:* Blok na konci PDF / sekce na stránce po posledním promptu. Nebo spíš uděláme interaktivní vlastní stránku k zobrazení po zadání emailu.
 
 *Příklad copy (jednoduché, pro začátečníky):*
 > **Líbily se vám tyhle prompty? Představte si, že dostanete 20 promptů přímo pro VÁS.**
@@ -124,7 +157,7 @@ Buduje důvěru v assessment jako data-driven nástroj. Bridge na B2B: "chcete t
 
 ---
 
-### 3. "Váš AI Toolkit na míru — za 3 otázky" — PERSONALIZACE
+### 3. "Váš AI Toolkit na míru — za 3 otázky" — PERSONALIZACE, musí být mega easy, abysme nekanibalizovali assesment
 
 **Formát:** Interaktivní stránka na aibility.org (3 otázky → email gate → personalizovaný výstup)
 **Cílovka:** Široká — funguje pro začátečníky i pokročilé, protože personalizace se přizpůsobí.
@@ -141,7 +174,7 @@ Buduje důvěru v assessment jako data-driven nástroj. Bridge na B2B: "chcete t
   - Mini workflow "jak začít tento týden"
 
 **Proč funguje:**
-Tom: *"Tohle nikdo nedělá. Tohle nás bude odlišovat."* Člověk okusí personalizaci v malém a přirozeně chce víc.
+Člověk okusí personalizaci v malém a přirozeně chce víc.
 
 **Jak prodáváme assessment UVNITŘ tohoto lead magnetu:**
 
@@ -209,7 +242,7 @@ Kontext: člověk právě zjistil, KOLIK času ztrácí. Je ve stavu "ok, a co s
 *Interstitial screeny MEZI otázkami kalkulačky (jako mobilní app onboarding):*
 
 Po otázce #2 (reporty):
-> **Věděli jste?** Průměrný profesionál tráví 4,5 hodiny týdně na reportech, které by AI zvládlo za 20 minut. Ale záleží na tom, jaký typ práce děláte — pro někoho je rychlejší cesta automatizace, pro někoho lepší prompty. *Za chvíli vám to spočítáme.*
+> **Věděli jste?** Průměrný profesionál tráví 4,5 hodiny týdně na reportech, které by AI zvládla za 20 minut. Ale záleží na tom, jaký typ práce děláte — pro někoho je rychlejší cesta automatizace, pro někoho lepší prompty. *Za chvíli vám to spočítáme.*
 
 Po otázce #4 (research):
 > **Zajímavost:** Ne každý ztrácí čas na tom samém. Někdo na emailech, někdo na rozhodování. Existuje způsob, jak přesně zjistit, kde VY ztrácíte nejvíc — a co s tím. *Ale nejdřív dokončete kalkulačku →*
@@ -240,11 +273,11 @@ Propojení výsledku kalkulačky s profilem — "Ztrácíte nejvíc času na ema
 
 ---
 
-### 5. "AI pro [váš obor]: Průvodce na míru" — OBOROVĚ CÍLENÝ
+### 5. "AI pro [váš obor]: Průvodce na míru" — OBOROVĚ CÍLENÝ - může dobře fungovat i pro B2B
 
 **Formát:** 3–4 krátké průvodce (PDF nebo interaktivní stránka), každý pro jiný obor
 **Cílovka:** Specifická podle oboru — marketing, HR, finance, management.
-**Složitost produkce:** Vyšší (3–4 varianty), ale každá varianta je kratší (8–10 stran).
+**Složitost produkce:** Vyšší (3–4 varianty), ale každá varianta je kratší.
 
 **Co to je:**
 - Série průvodců — každý specifický pro jeden obor:
@@ -252,7 +285,7 @@ Propojení výsledku kalkulačky s profilem — "Ztrácíte nejvíc času na ema
   - **"AI pro HR & L&D"** — nábor, onboarding, rozvoj, assessment zaměstnanců
   - **"AI pro finance"** — reporting, forecasting, analýza, automatizace procesů
   - **"AI pro management"** — rozhodování, meeting efektivita, strategické plánování
-- Každý průvodce: 8–10 stran, konkrétní use casy, prompty, nástroje, příklady pro daný obor
+- Každý průvodce: 8–10 stran, konkrétní use casy, prompty, nástroje, příklady pro daný obor. Můžeme využít naše vlastní use-casy z chlubírny.
 
 **Proč funguje:**
 Na LinkedInu a Metě cílíš podle job title. HR manažerka klikne na "AI pro HR" 10× spíš než na obecných "10 promptů".
@@ -309,7 +342,7 @@ Hyper-cílené kampaně. Každý průvodce = jiný ad set. Po assessmentu: oboro
 - Ke každému bodu: jeden konkrétní prompt, který člověk zkopíruje a hned použije
 
 **Proč funguje:**
-Extrémně nízká bariéra. Lidi si to FAKT použijí — jedna strana, ne 30stránkový ebook. Super sdílitelný.
+Extrémně nízká bariéra. Lidi si to FAKT použijí — jedna strana, ne 30stránkový ebook. Super sdílitelný. Super lame = mega široká cílovka.
 
 **Jak prodáváme assessment UVNITŘ tohoto lead magnetu:**
 
@@ -409,6 +442,78 @@ Aspirace → self-assessment potřeba → assessment jako odpověď. Silný pro 
 
 ---
 
+### Lead Magnet #8 — "Jak na vlastní mozek s AI" (Verča)
+
+**Formát:** Návod (PDF / stránka) + prompt + Skill z Aimee
+**Cílová skupina:** Každý, kdo pracuje s informacemi — manažeři, konzultanti, freelanceři, studenti. Téma řeší každý napříč obory.
+**Core premise:** Většina lidí AI používá na jednorázové úkoly. Ale co kdybyste měli systém — "druhý mozek" — kde AI zná váš kontext, pamatuje si vaše projekty a pracuje s vámi dlouhodobě?
+
+**Obsah:**
+1. **Co to je "vlastní mozek s AI"** — vysvětlení konceptu (AI jako asistent s pamětí, ne jednorázový chatbot)
+2. **Proč je to game-changer** — praktické příklady, kolik času/úsilí ušetří
+3. **Jak na to krok za krokem** — Filipův framework (Capture → Clean → Connect → Create → Calibrate)
+4. **Prompt na rozjezd** — ready-to-use prompt, který vytvoří základ systému
+5. **Skill z Aimee** — odkaz na Skill/agenta, který pomůže ten systém vytvořit a udržovat
+
+**Jak prodáváme assessment UVNITŘ tohoto lead magnetu:**
+
+*Po kroku 3 (framework):*
+> **Pozor:** Druhý mozek je silný nástroj. Ale každý ho staví jinak — Builder z toho udělá automatizaci, Navigator ho používá na strategické rozhodování, Catalyst přes něj koordinuje tým. Nevíte, jaký typ jste vy?
+
+*Velký CTA blok na konci:*
+> **Máte základ — teď zjistěte, jak ho využijete nejlépe.**
+>
+> Druhý mozek se dá postavit stovkou způsobů. Který bude fungovat pro VÁS závisí na tom, jak přirozeně s AI pracujete. Za 10 minut to zjistíte — bezplatný Superpowered Professional™ test zmapuje váš AI archetyp, superpowers a growth edge.
+>
+> → **Zjistit svůj AI profil (10 min, zdarma)**
+
+**Co dostanou PO assessmentu (personalizovaný bonus):**
+20 promptů na míru pro váš archetyp — "Jako [archetyp] postavte druhý mozek takhle: [konkrétní workflow pro váš typ]."
+
+**Kam zapadá v journey:**
+Praktický návod → potřeba personalizace → assessment jako odpověď. Široký záběr, funguje pro LinkedIn i newsletter.
+
+**Distribuce:** LinkedIn (post/carousel), newsletter, social (IG/Meta), blog.
+**Spustitelnost:** Hned — Verča má obsah i kontext. Draft do středy 2.4.
+
+---
+
+### Lead Magnet #9 — AI Skill z GitHubu (Kuba)
+
+**Formát:** Skill/prompt + návod (PDF / stránka)
+**Cílová skupina:** Profesionálové, kteří chtějí konkrétní, okamžitě použitelný AI nástroj. Od juniorů po seniory.
+**Core premise:** Na GitHubu jsou open source AI Skilly, které řeší reálné problémy. My vezmeme ten nejlepší, přeložíme ho, přidáme kontext a ukážeme, jak ho použít.
+
+**Obsah:**
+1. **Co je to AI Skill** — vysvětlení, proč je to víc než prompt (kontext, instrukce, workflow)
+2. **Konkrétní Skill** — trending skill z GitHubu (inspirace: impeccable apod.), NE 100% kopie — upravený, přeložený do češtiny, s přidaným kontextem
+3. **Jak ho použít krok za krokem** — screenshoty, příklady, tipy
+4. **Variace pro různé use case** — "Pokud jste v marketingu, použijte takhle. V IT takhle."
+5. **Kde najít další** — krátký přehled, kde hledat open source AI Skilly
+
+**Jak prodáváme assessment UVNITŘ tohoto lead magnetu:**
+
+*Po ukázce skillu:*
+> **Tohle je JEDEN skill. Ale co kdybyste věděli, které skilly potřebujete VY?** Každý AI archetyp má jiné silné stránky — Builder potřebuje jiné nástroje než Navigator. Za 10 minut zjistíte, jaký typ jste a které skilly vám přinesou největší posun.
+
+*CTA na konci:*
+> **Skill máte. Teď zjistěte, které další potřebujete.**
+>
+> Bezplatný Superpowered Professional™ test za 10 minut zmapuje váš AI profil — archetyp, superpowers, growth edge. Na základě výsledků dostanete doporučení na další skilly přesně pro vás.
+>
+> → **Zjistit svůj AI profil (10 min, zdarma)**
+
+**Co dostanou PO assessmentu (personalizovaný bonus):**
+"Top 5 AI Skillů pro váš archetyp" — personalizovaný seznam s odkazy.
+
+**Kam zapadá v journey:**
+Praktická hodnota → zvědavost na víc → assessment jako cesta k personalizaci. Funguje skvěle pro tech-savvy audience na LinkedIn a X.
+
+**Distribuce:** LinkedIn, X/Twitter, dev komunity, newsletter.
+**Spustitelnost:** Hned — Kuba najde trending skill, upraví, přeloží. Draft do středy 2.4.
+
+---
+
 ## Srovnání Lead Magnetů
 
 | # | Lead magnet | Formát | Personalizace | Cold audience | Warm audience | Složitost | Kdy spustit |
@@ -420,11 +525,13 @@ Aspirace → self-assessment potřeba → assessment jako odpověď. Silný pro 
 | 5 | AI pro [obor] | PDF / stránka × 3–4 | Per-obor | Ideální (cílené) | OK | Vyšší | 2 týdny |
 | 6 | AI Cheat Sheet | 1 strana / carousel | Obecný | Ideální | OK | Nejnižší | 1 den |
 | 7 | 5 návyků AI lídrů | Ebook / stránka | Obecný | OK | Ideální | Střední | 1–2 týdny |
+| **8** | **Jak na vlastní mozek s AI** | **Návod + prompt + Skill** | **Obecný** | **Ideální** | **Ideální** | **Nízká** | **Hned** |
+| **9** | **AI Skill z GitHubu** | **Skill/prompt + návod** | **Per-use case** | **Ideální** | **OK** | **Nízká** | **Hned** |
 
-**Doporučení pro první vlnu (vybrat 3):**
-- **Quick start:** #6 (Cheat Sheet) — hotový za den, otestuje celý flow
-- **Volume play:** #1 (10 Promptů) nebo #4 (Kalkulačka) — široký záběr, vysoká konverze
-- **Diferenciátor:** #3 (Toolkit na míru) — personalizace, co nikdo nedělá
+**První vlna (domluveno 30.3.):**
+- **Verča:** #8 (Druhý mozek s AI)
+- **Kuba:** #9 (AI Skill z GitHubu)
+- **Aneta:** #4 (Kalkulačka) nebo #1 (10 Promptů)
 
 ---
 
@@ -487,7 +594,7 @@ Aspirace → self-assessment potřeba → assessment jako odpověď. Silný pro 
 **Co se děje na pozadí:**
 - Brevo: Vytvoří se kontakt s tagy:
   - `sp-lead-lm` (lead přišel přes lead magnet)
-  - `sp-lm-{typ}` (specifický tag: `sp-lm-prompty`, `sp-lm-report`, `sp-lm-toolkit`, `sp-lm-kalkulacka`, atd.)
+  - `sp-lm-{typ}` (specifický tag: `sp-lm-prompty`, `sp-lm-report`, `sp-lm-toolkit`, `sp-lm-kalkulacka`, `sp-lm-obor-{typ}`, `sp-lm-cheatsheet`, `sp-lm-navyky`, `sp-lm-mozek`, `sp-lm-skill`)
   - UTM parametry uloženy jako custom attributes
 - Airtable: Nový lead record (jméno, email, zdroj, lead magnet, datum)
 - Slack: Notifikace do #sp-leads
@@ -579,7 +686,8 @@ Tady je jádro. 4 emaily v průběhu 10 dní. Cíl: dostat je k free assessmentu
   - `sp-lm-kalkulacka`: "Kalkulačka vám ukázala, kolik času ztrácíte. Ale neřekla vám, jak přesně VY to máte řešit."
   - `sp-lm-cheatsheet`: "Ta rutina, co jste si stáhli, je dobrý základ. Ale je to rutina pro všechny."
   - `sp-lm-navyky`: "Těch 5 návyků platí. Ale kolik z nich reálně máte?"
-  - atd.
+  - `sp-lm-mozek`: "Ten druhý mozek, co stavíte — je skvělý základ. Ale každý archetyp ho staví jinak."
+  - `sp-lm-skill`: "Ten skill, co jste si stáhli, funguje. Ale je to jeden z desítek, které byste mohli používat."
 - Tělo — UKÁZKA rozdílu obecné vs. personalizované:
   > **Obecný tip:** "Používejte AI na brainstorming."
   >
@@ -666,6 +774,8 @@ V Brevo to řešíme přes **podmíněné bloky (conditions)**:
 - IF tag = `sp-lm-obor-*` → "Ten průvodce pro [obor] byl obecný. Assessment vám dá tipy přesně pro vás..."
 - IF tag = `sp-lm-cheatsheet` → "Ta rutina, co jste si stáhli, je univerzální. Assessment vám navrhne rutinu na míru..."
 - IF tag = `sp-lm-navyky` → "Těch 5 návyků mělo top 10 %. Kolik z nich máte vy? Assessment to změří..."
+- IF tag = `sp-lm-mozek` → "Ten druhý mozek je skvělý základ. Ale každý archetyp ho staví jinak — assessment vám řekne, jak ho postavit přesně pro vás..."
+- IF tag = `sp-lm-skill` → "Ten skill, co jste si stáhli, je jeden z mnoha. Assessment vám ukáže, které další přesně potřebujete..."
 
 Tím máme JEDNU sekvenci v Brevo, ale email se čte jinak podle toho, odkud člověk přišel. Minimální údržba, maximum relevance.
 
@@ -690,6 +800,8 @@ Tím máme JEDNU sekvenci v Brevo, ale email se čte jinak podle toho, odkud čl
 | `sp-lm-obor-{typ}` | Stáhl lead magnet #5 (AI pro obor) | Personalizace sekvence + segmentace |
 | `sp-lm-cheatsheet` | Stáhl lead magnet #6 (Cheat Sheet) | Personalizace sekvence + segmentace |
 | `sp-lm-navyky` | Stáhl lead magnet #7 (5 návyků) | Personalizace sekvence + segmentace |
+| `sp-lm-mozek` | Stáhl lead magnet #8 (Druhý mozek s AI) | Personalizace sekvence + segmentace |
+| `sp-lm-skill` | Stáhl lead magnet #9 (AI Skill z GitHubu) | Personalizace sekvence + segmentace |
 | **Assessment status** | | |
 | `sp-assessment-started` | Začal assessment | Trigger pro zastavení LM sekvence |
 | `sp-completed` | Dokončil free assessment | Přepnutí na Tomášovu sekvenci |
